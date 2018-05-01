@@ -27,7 +27,7 @@
 
         <section class="bg-content" id="about">
             <div class="sectionWrapper">
-                <h2 class="headline">Daniel Green</h2>
+                <h2 class="headline">About Me</h2>
                 <p>The first thing you need to know about me is that I'm a
                     <span class="emphasis">small dog kind of guy</span>, an amateur photographer, and a car enthusiast. Now on to the boring stuff!
                     </p>
