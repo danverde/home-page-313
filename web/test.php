@@ -20,7 +20,7 @@
         }
     }
 
-    echo $url
+    var_dump($url);
     ?>
 </body>
 
