@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
-    <?php echo 'hello there my friend'; ?>
 
+<head>
+    <style>
+        .red {
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
     <?php 
-    for ($i = 0; $i <= 10; $i++) {
+    /* generate 10 divs, with evens colored in red */
+    for ($i = 1; $i <= 10; $i++) {
         if ($i % 2 == 0) {
-            echo "<div id='$i' style='color:red'>div num $i</div>";
+            echo "<div id='$i' class='red'>div num $i</div>";
         } else {
             echo "<div id='$i'>div num $i</div>";
         }
     }
+
+    echo $url
     ?>
 </body>
+
 </html>
