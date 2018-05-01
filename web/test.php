@@ -7,7 +7,11 @@
 
     <?php 
     for ($i = 0; $i <= 10; $i++) {
-        echo "<div id='$i'>div num $i</div>";
+        if ($i % 2 == 0) {
+            echo "<div id='$i' style='color:red'>div num $i</div>";
+        } else {
+            echo "<div id='$i'>div num $i</div>";
+        }
     }
     ?>
 </body>
