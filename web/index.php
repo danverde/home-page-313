@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -30,7 +31,7 @@
                 <h2 class="headline">About Me</h2>
                 <p>The first thing you need to know about me is that I'm a
                     <span class="emphasis">small dog kind of guy</span>, an amateur photographer, and a car enthusiast. Now on to the boring stuff!
-                    </p>
+                </p>
                 <p>I'm currently a
                     <span class="emphasis">student</span> and a part-time
                     <span class="emphasis">Front-End Web Developer</span> for Brigham Young University-Idaho. When it comes to design, I believe
