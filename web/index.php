@@ -15,7 +15,7 @@
         <nav>
             <span>Daniel Green</span>
             <a href="#about">About Me</a>
-            <a href="#assignments">Assignments (coming soom)</a>
+            <a href="#assignments">Assignments (coming soon)</a>
         </nav>
     </header> -->
     <?php   
