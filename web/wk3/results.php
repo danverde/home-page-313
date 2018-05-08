@@ -23,6 +23,9 @@
 <body>
     <?php //var_dump($_POST) ?>
     <?php echo "<p>Your Name: {$name}</p>";?>
+    <?php echo "<a href='mailto:{$email}'>Your email: {$email}</a>";?>
+    <?php echo "<p>Your Major: {$major}</p>";?>
+    <?php echo "<p>Your Comments: {$comments}</p>";?>
     
 </body>
 
