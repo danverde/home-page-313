@@ -210,9 +210,10 @@ main section {
     transition: all 1s;
 }
 
-.moveIn {
+.scrollBox.moveIn {
     opacity: 1;
     top: 0vh;
+    margin-top: 25%;
 }
 
 /* Parallax effect */
