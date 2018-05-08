@@ -9,29 +9,29 @@
     <h1>Week 3 Teach one another Form Submission</h1>
     <form action="results.php" method="POST">
         <label for="fullName">Name</label>
-        <input type="text" name="fullName">
+        <input type="text" name="fullName" required>
 
         <br>
 
         <label for="email">Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
 
         <br>
 
         <label for="computerScience">Computer Science</label>
-        <input type="radio" name="major" value="computerScience">
+        <input type="radio" name="major" value="computerScience" required>
         <br>
         <label for="webDev">Web Design &amp; Development</label>
-        <input type="radio" name="major" value="webDev">
+        <input type="radio" name="major" value="webDev" required>
         <br>
         <label for="CIT">CIT</label>
-        <input type="radio" name="major" value="CIT">
+        <input type="radio" name="major" value="CIT" required>
         <br>
         <label for="computerEngineering">Computer Engineering</label>
-        <input type="radio" name="major" value="computerEngineering">
+        <input type="radio" name="major" value="computerEngineering" required>
         <br>
         <label for="comments">Comments</label>
-        <textarea name="comments" wrap="hard"></textarea>
+        <textarea name="comments" wrap="hard" required></textarea>
         <br>
         <input type="submit" value="Submit">
     </form>
