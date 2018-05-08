@@ -61,7 +61,7 @@
                 <p>More Coming soon!</p>
                 <ul>
                     <li><a href="wk2/helloWorld.html">Hello World</a></li>
-                    <li><a href="wk3/wk3Teach.html">Week 3 Teach one another</a></li>
+                    <li><a href="wk3/wk3Teach.php">Week 3 Teach one another</a></li>
                 </ul>
             </div>
         </section>
