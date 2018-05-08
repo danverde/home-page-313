@@ -31,7 +31,7 @@
     <?php echo "<p>Your Comments: {$comments}</p>";?>
     <?php 
     echo "You have visited the following continent(s):";
-    foreach ($contients as $continent) {
+    foreach ($contients as &$continent) {
         echo "<p>{$continent}</p>";
     }?>
     
