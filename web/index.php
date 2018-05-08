@@ -60,7 +60,7 @@
                 <h2 class="headline">Assignments</h2>
                 <p>More Coming soon!</p>
                 <ul>
-                    <li><a href="helloWorld.html">Hello World</a></li>
+                    <li><a href="wk2/helloWorld.html">Hello World</a></li>
                     <li><a href="wk3/wk3Teach.html">Week 3 Teach one another</a></li>
                 </ul>
             </div>

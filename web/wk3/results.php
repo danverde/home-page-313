@@ -6,6 +6,7 @@
     $continents = $_POST["continents"];
 
     function test_input($data) {
+        $data = htmlspecialchars($data);
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
