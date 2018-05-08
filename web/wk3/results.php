@@ -7,6 +7,7 @@
 
     // var_dump($_POST);
     var_dump($continents);
+    var_dump($continents);
 
     function test_input($data) {
         $data = trim($data);
