@@ -1,6 +1,4 @@
 <?php
-
-
     $email;
     $name;
     $major;
