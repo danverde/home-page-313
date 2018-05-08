@@ -22,7 +22,7 @@
 
 <body>
     <?php //var_dump($_POST) ?>
-    <?php if (isset($name)) {echo "<p>Your Name:", $name, "</p>";}?>
+    <?php echo "<p>Your Name: {$name}</p>";?>
     
 </body>
 
