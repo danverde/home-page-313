@@ -10,13 +10,19 @@
     <script src="main.js"></script>
 </head>
 
-<body>
+<body onload="scrollBox('#intro .scrollBox')">
     <?php   
         require 'header.php'
     ?>
 
     <main>
-        <section class="bg-img bg-1">
+        <section class="bg-img bg-1 all-caps" id="intro">
+            <div class="sectionWrapper">
+                <div class="scrollBox">
+                    <h1 class="all-caps">&lt;Daniel Green/&gt;</h1>
+                    <h2>&lt;Front End Web developer/&gt;</h2>
+                </div>
+            </div>
         </section>
 
         <section class="bg-content" id="about">
