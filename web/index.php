@@ -237,13 +237,10 @@ main {
   background-color: lightgray; }
 
 .bg-1 {
-  background-image: url("assets/img1.jpg"); }
+  background-image: url("images/img1.jpg"); }
 
 .bg-2 {
-  background-image: url("../images/img2.jpg"); }
-
-.bg-3 {
-  background-image: url("../images/img3.jpg"); }
+  background-image: url("images/img2.jpg"); }
 
 /*# sourceMappingURL=style.css.map */
 
