@@ -5,6 +5,8 @@
     $comments = test_input($_POST["comments"]);
     $continents = test_input($_POST["continents"]);
 
+    var_dump($_POST);
+    var_dump($continents);
 
     function test_input($data) {
         $data = trim($data);
