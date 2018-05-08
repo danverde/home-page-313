@@ -3,6 +3,7 @@
     $email = test_input($_POST["email"]);
     $major = test_input($_POST["major"]);
     $comments = test_input($_POST["comments"]);
+    $continents = test_input($_POST["continents"]);
 
 
     function test_input($data) {
@@ -26,6 +27,11 @@
     <?php echo "<a href='mailto:{$email}'>Your email: {$email}</a>";?>
     <?php echo "<p>Your Major: {$major}</p>";?>
     <?php echo "<p>Your Comments: {$comments}</p>";?>
+    <?php 
+        echo "You have visited the following continent(s):";
+    foreach ($contients as $continent) {
+        echo "<p>{$continent}</p>";
+    }?>
     
 </body>
 
