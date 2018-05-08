@@ -48,8 +48,8 @@
         <section class="bg-img bg-2">
         </section>
 
-        <section class="bg-content">
-            <div id="assignments" class="sectionWrapper">
+        <section class="bg-content" id="assignments">
+            <div class="sectionWrapper">
                 <h2 class="headline">Assignments</h2>
                 <p>More Coming soon!</p>
                 <ul>
