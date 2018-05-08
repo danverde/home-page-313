@@ -18,10 +18,8 @@
         <input type="text" name="name" id="name" required>
 
         <br>
-
         <label for="email">Email</label>
         <input type="email" name="email" id="email" required>
-
         <br>
 
         <?php 
@@ -29,7 +27,6 @@
             echo "<lable for='{$i}'>{$major}</label><input type='radio' name='major' id='{$i}' value='{$major}' required><br>";
         }
         ?>
-
 
         <label for="NA">North America</label>
         <input name="continents[]" type="checkbox" id="NA" value="NA">
@@ -52,8 +49,6 @@
         <label for="AF">Africa</label>
         <input name="continents[]" type="checkbox" id="AF" value="AF">
         <br>
-
-
         
         <input type="submit" value="Submit">
     </form>

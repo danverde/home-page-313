@@ -35,7 +35,5 @@
     }
     echo "</ul>";
     ?>
-    
 </body>
-
 </html>
