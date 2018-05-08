@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Week 3 Teach</title>
-    </head>
-    <body>
-        <h1>Week 3 Teach one another Form Submission</h1>
-        <form>
-            
-        </form>
-    </body>
+
+<head>
+    <title>Week 3 Teach</title>
+</head>
+
+<body>
+    <h1>Week 3 Teach one another Form Submission</h1>
+    <form action="results.php" method="POST">
+        <label for="fullName">Name</label>
+        <input type="text" name="fullName">
+
+        <br>
+
+        <label for="email">Email</label>
+        <input type="email" name="email">
+
+        <br>
+
+        <label for="computerScience">Computer Science</label>
+        <input type="radio" name="major" id="computerScience">
+        <br>
+        <label for="webDev">Web Design &amp; Development</label>
+        <input type="radio" name="major" id="webDev">
+        <br>
+        <label for="CIT">CIT</label>
+        <input type="radio" name="major" id="CIT">
+        <br>
+        <label for="computerEngineering">Computer Engineering</label>
+        <input type="radio" name="major" id="computerEngineering">
+        <br>
+        <label for="comments">Comments</label>
+        <textarea name="comments" wrap="hard"></textarea>
+    </form>
+</body>
+
 </html>
