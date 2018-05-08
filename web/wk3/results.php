@@ -27,11 +27,13 @@
     <?php echo "<p>Your Major: {$major}</p>";?>
     <?php echo "<p>Your Comments: {$comments}</p>";?>
     <?php 
-    echo "You have visited the following continent(s):";
+    echo "<p>You have visited the following continent(s):</p><ul>";
     foreach ($continents as $continent) {
         $continentClean = test_input($continent);
-        echo "<p>{$continentClean}</p>";
-    }?>
+        echo "<li>{$continentClean}</li>";
+    }
+    echo "</ul>";
+    ?>
     
 </body>
 
