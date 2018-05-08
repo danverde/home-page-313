@@ -6,8 +6,8 @@
     $continents = $_POST["continents"];
 
     // var_dump($_POST);
-    var_dump($continents);
-    var_dump($continents);
+    // print_r($continents);
+    // var_dump($continents);
 
     function test_input($data) {
         $data = trim($data);
@@ -32,8 +32,10 @@
     <?php echo "<p>Your Comments: {$comments}</p>";?>
     <?php 
     echo "You have visited the following continent(s):";
-    foreach ($contients as &$continent) {
-        echo "<p>{$continent}</p>";
+    foreach ($contients as $continent) {
+        var_dump($continent);
+        $continentClean = test_input($continent);
+        echo "<p>{$continentClean}</p>";
     }?>
     
 </body>
