@@ -1,5 +1,5 @@
 <?php 
-    $majors = array("WDD"=>"Web Dev", "CS"=>"Computer Science", "CIT"=>"Computer Information Technology", "CE"=>"Computer Engineering");
+    $majors = array("WDD"=>"Web Development", "CS"=>"Computer Science", "CIT"=>"Computer Information Technology", "CE"=>"Computer Engineering");
 
 ?>
 
@@ -30,42 +30,27 @@
         }
         ?>
 
-        <!-- <label for="CS">Computer Science</label>
-        <input type="radio" name="major" id="CS" value="CS" required>
-        <br>
-        <label for="WDD">Web Design &amp; Development</label>
-        <input type="radio" name="major" id="WDD" value="WDD" required>
-        <br>
-        <label for="CIT">Computer Information Technology</label>
-        <input type="radio" name="major" id="CIT" value="CIT" required>
-        <br>
-        <label for="CE">Computer Engineering</label>
-        <input type="radio" name="major" id="CE" value="CE" required>
-        <br>
-        <label for="comments">Comments</label>
-        <textarea name="comments" wrap="hard" required></textarea>
-        <br> -->
 
         <label for="NA">North America</label>
-        <input name="continents[]" type="checkbox" value="North America">
+        <input name="continents[]" type="checkbox" id="NA" value="NA">
         <br>
         <label for="SA">South America</label>
-        <input name="continents[]" type="checkbox" value="South America">
+        <input name="continents[]" type="checkbox" id="SA" value="SA">
         <br>
-        <label for="Australia">Australia</label>
-        <input name="continents[]" type="checkbox" value="Australia">
+        <label for="AU">Australia</label>
+        <input name="continents[]" type="checkbox" id="AU" value="AU">
         <br>
-        <label for="Antartica">Antartica</label>
-        <input name="continents[]" type="checkbox" value="Antartica">
+        <label for="AN">Antartica</label>
+        <input name="continents[]" type="checkbox" id="AN" value="AN">
         <br>
-        <label for="Asia">Asia</label>
-        <input name="continents[]" type="checkbox" value="Asia">
+        <label for="AS">Asia</label>
+        <input name="continents[]" type="checkbox" id="AS" value="AS">
         <br>
-        <label for="Europe">Europe</label>
-        <input name="continents[]" type="checkbox" value="Europe">
+        <label for="EU">Europe</label>
+        <input name="continents[]" type="checkbox" id="EU" value="EU">
         <br>
-        <label for="Africa">Africa</label>
-        <input name="continents[]" type="checkbox" value="Africa">
+        <label for="AF">Africa</label>
+        <input name="continents[]" type="checkbox" id="AF" value="AF">
         <br>
 
 

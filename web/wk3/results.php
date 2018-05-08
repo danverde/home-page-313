@@ -5,6 +5,8 @@
     $comments = test_input($_POST["comments"]);
     $continents = $_POST["continents"];
 
+    $continentMap = array("NA"=>"North America", "SA"=>"South America", "EU"=>"Europe", "AU"=>"Australia", "AN"=>"Antartica", "AF"=>"Africa", "AS"=>"Asia");
+
     function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -28,7 +30,8 @@
     echo "<p>You have visited the following continent(s):</p><ul>";
     foreach ($continents as $continent) {
         $continentClean = test_input($continent);
-        echo "<li>{$continentClean}</li>";
+        // echo "<li>{$continentClean}</li>";
+        echo "<li>{$continentMap[$continent]}</li>";
     }
     echo "</ul>";
     ?>
