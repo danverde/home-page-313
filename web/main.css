@@ -210,7 +210,7 @@ main section {
     transition: all 1s;
 }
 
-.scrollBox.moveIn {
+#intro .scrollBox.moveIn {
     opacity: 1;
     top: 0vh;
     margin-top: 25%;
