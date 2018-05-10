@@ -22,6 +22,10 @@
         <input type="email" name="email" id="email" required>
         <br>
 
+        <label for="comments">Comments</label>
+        <textarea name="comments" wrap="hard" required></textarea>
+        <br>
+
         <?php 
         foreach ($majors as $i => $major) {
             echo "<lable for='{$i}'>{$major}</label><input type='radio' name='major' id='{$i}' value='{$major}' required><br>";
