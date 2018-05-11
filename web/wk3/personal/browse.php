@@ -1,21 +1,18 @@
 <?php 
-var_dump(session_status());
-var_dump(isset($_SESSION));
-if (!isset($_SESSION)) {
-    // echo 'starting session';
     session_start();
-    var_dump(session_id());
-    // $_SESSION['exists'] = true;
-    // $_SESSION['enableCart'] = false;
-    // $_SESSION['cart'] = array(array('name' => 'Item One', 'price' => 50, 'quantity' => 0 ),
-    //     array('name' => 'item Two', 'price' => 200, 'quantity' => 0));
+    // var_dump(session_id());
+    if (!isset($_SESSION['existingSession'])) {
+        // so I know if it's a new session or not.
+        $_SESSION['existingSession'] = true;
+    } else {
 
-    // var_dump($_SESSION['exists']);
-} else {
-    echo 'session exists';
-}
-$enabledCart = $_SESSION['enableCart'];
-$cart = $_SESSION['cart'];
+    }
+
+    $defaultCart = array(array('name' => 'Item One', 'price' => 50, 'quantity' => 0 ),
+    array('name' => 'item Two', 'price' => 200, 'quantity' => 0));
+    
+    $cart;
+    $enabledCart = true;
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +46,7 @@ $cart = $_SESSION['cart'];
     <div class="flex-wrapper">
         <form action='control.php' method='POST' name='addItem'>
             <?php 
-            foreach ($cart as $item) {
+            foreach ($defaultCart as $item) {
                 // echo "<div class='flex-wrapper space-around'><p>".$item['name']."</p><p>$".$item['price']."</p><p>".$item['quantity']."</p><button class='button'>Add Item</button></div>";
             }
             ?>
