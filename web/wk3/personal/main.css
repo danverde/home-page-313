@@ -80,3 +80,7 @@ button.button:hover {
 .button.disabled:hover {
     text-decoration: none;
 }
+
+.button.warning {
+    background-color: #d23c3c;
+}

@@ -34,6 +34,7 @@
     <header class="flex-wrapper space-between">
         <h1>Browse Items</h1>
         <nav>
+        <a class='button warning' href='./destroy.php'>EMPTY CART</a>
             <a class="button" href="../../index.php#assignments">Home</a>
             <?php 
             if ($enabledCart === true) {
@@ -44,22 +45,21 @@
         </nav>
 </header>
     <div class="flex-wrapper">
-        <form action='control.php' method='POST' name='addItem'>
             <?php 
-            var_dump($cart);
-            // foreach ($cart as $itemName => $item) {
-            //     var_dump($item);
-            //     echo "<div class='flex-wrapper space-around'><p>".$itemName."</p><p>$".$item['price']."</p><p>".$item['quantity']."</p><button class='button'>Add Item</button></div>";
-            // }
+            foreach ($cart as $itemName => $item) {
+                echo "
+                <form action='control.php' method='POST' name='addItem'>
+                <input type='hidden' value='addItem' name='action'>
+                <input type='hidden' value='{$itemName}' name='name'>
+                <div class='flex-wrapper space-around'>
+                    <p>".$itemName."</p>
+                    <p>$".$item['price']."</p>
+                    <p>".$item['quantity']."</p>
+                    <button class='button' onclick='addItem(this)'>Add Item</button>
+                </div>
+                </form>";
+            }
             ?>
-            <!-- <div class='flex-wrapper space-around'>
-                <p>Name</p>
-                <p>Price</p>
-                <p>Quantity</p>
-                <button class='button' onclick='addItem(this)'>Add Item</button>
-                <input value='itemOne' type='hidden' name='name'>
-            </div> -->
-        </form>
     </div>
 </body>
 </html>

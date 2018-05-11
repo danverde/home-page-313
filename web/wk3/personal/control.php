@@ -1,16 +1,23 @@
 <?php
-session_start();
-// don't let you come here first!
-if (isset($_SESSION['existingSession'])) {
-    // $cart = $_SESSION['cart'];
-    $addedItem = $_POST['name'];
-    $_SESSION['cart'][$addedItem]['quantity']++;
 
+session_start();
+
+$action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
+$location = './browse.php';
+
+if (isset($_SESSION['existingSession']) && $action == 'addItem') {
+    $location = './browse.php';
+    
+
+    $addedItem = $_POST['name'];
+    
+    $_SESSION['cart'][$addedItem]['quantity']++;
+    
     var_dump($_SESSION['cart']);
-    // var_dump($_POST);
+    var_dump($addedItem);
 }
 
-header('Location: ./browse.php');
+header("Location: {$location}");
 exit();
 return;
 ?>
