@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
+html {
+    --main-btn-color: #009f00;
+    --main-act-color: #d1bb9c;
+    --main-bg-color: #ededed;
+    background-color: var(--main-bg-color);
+}
+
+body {
+    width: 75vw;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+    height: 100vh;
+    font-family: 'roboto', sans-serif;
+}
+
+form {
+    width: 100%;
+}
+
+header {
+    background-color: var(--main-act-color);
+    padding: 0px 15px;
+}
+
+/* start templates */
+
+.inline {
+    display: inline-block;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.flex-wrapper div {
+    width: 100%;
+    border: 1px solid gray;
+    /* display: inline-block; */
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+button.button {
+    background-color: var(--main-btn-color);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+}
+
+a.button {
+    color: white;
+    background-color: var(--main-btn-color);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+a.button:hover,
+button.button:hover {
+    text-decoration: underline;
+}
+
+.button.disabled {
+    background-color: gray;
+}
+
+.button.disabled:hover {
+    text-decoration: none;
+}

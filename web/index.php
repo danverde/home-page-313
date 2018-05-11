@@ -58,11 +58,21 @@
         <section class="bg-content" id="assignments">
             <div class="sectionWrapper">
                 <h2 class="headline">Assignments</h2>
-                <p>More Coming soon!</p>
+                <h3>More Coming Weekly</h3>
+                <p>Week 2</p>
                 <ul>
                     <li><a href="wk2/helloWorld.html">Hello World</a></li>
-                    <li><a href="wk3/wk3Teach.php">Week 3 Teach one another</a></li>
                 </ul>
+                <p>Week 3</p>
+                <ul>
+                    <li><a href="wk3/wk3Teach.php">Week 3 Teach one another</a></li>
+                    <li><a href="wk3/counter.php">Week 3 Session Counter</a></li>
+                    <li><a href="wk3/personal/browse.php">Week 3 Assignment Cart</a></li>
+                </ul>
+                <p>Week 4</p>
+                <p>Week 5</p>
+                <p>Week 6</p>
+                <p>Week 7</p>
             </div>
         </section>
     </main>
