@@ -1,17 +1,18 @@
 <?php 
     session_start();
+    $defaultCart = array('itemOne' => array('price' => 50, 'quantity' => 0 ),
+        'itemTwo' => array('price' => 200, 'quantity' => 0));
+
     // var_dump(session_id());
     if (!isset($_SESSION['existingSession'])) {
         // so I know if it's a new session or not.
         $_SESSION['existingSession'] = true;
-    } else {
+        $_SESSION['cart'] = $defaultCart;
+    } 
 
-    }
-
-    $defaultCart = array(array('name' => 'Item One', 'price' => 50, 'quantity' => 0 ),
-    array('name' => 'item Two', 'price' => 200, 'quantity' => 0));
     
-    $cart;
+    $cart = $_SESSION['cart'];
+    
     $enabledCart = true;
 ?>
 
@@ -23,10 +24,9 @@
     <title>Browse Items</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <!-- <script src="main.js"></script> -->
-    <script src="main.js">
+    <script>
         function addItem(element) {
-            
+            document.forms['addItem'].submit();
         }
     </script>
 </head>
@@ -46,11 +46,19 @@
     <div class="flex-wrapper">
         <form action='control.php' method='POST' name='addItem'>
             <?php 
-            foreach ($defaultCart as $item) {
-                // echo "<div class='flex-wrapper space-around'><p>".$item['name']."</p><p>$".$item['price']."</p><p>".$item['quantity']."</p><button class='button'>Add Item</button></div>";
-            }
+            var_dump($cart);
+            // foreach ($cart as $itemName => $item) {
+            //     var_dump($item);
+            //     echo "<div class='flex-wrapper space-around'><p>".$itemName."</p><p>$".$item['price']."</p><p>".$item['quantity']."</p><button class='button'>Add Item</button></div>";
+            // }
             ?>
-            <div class='flex-wrapper space-around'><p>Name</p><p>Price</p><p>Quantity</p><button class='button' onclick='addItem(this)'>Add Item</button><input value='1' input='hidden' name='itemOne'></div>
+            <!-- <div class='flex-wrapper space-around'>
+                <p>Name</p>
+                <p>Price</p>
+                <p>Quantity</p>
+                <button class='button' onclick='addItem(this)'>Add Item</button>
+                <input value='itemOne' type='hidden' name='name'>
+            </div> -->
         </form>
     </div>
 </body>
