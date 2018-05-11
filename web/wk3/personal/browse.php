@@ -13,7 +13,14 @@
     
     $cart = $_SESSION['cart'];
     
-    $enabledCart = true;
+    $enabledCart = false;
+
+    foreach ($cart as $itemName => $item) {
+        if ($item['quantity'] > 0) {
+            $enabledCart = true;
+            break;
+        }
+    }
 ?>
 
 <!DOCTYPE html>

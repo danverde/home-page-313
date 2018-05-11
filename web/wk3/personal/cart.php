@@ -1,5 +1,9 @@
 <?php 
-
+if (!isset($_SESSION['existingSession'])) {
+    header("Location: ./browse.php");
+    exit();
+    return;
+} 
 ?> 
 
 <!DOCTYPE html>
