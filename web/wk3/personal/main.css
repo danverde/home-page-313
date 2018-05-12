@@ -116,7 +116,9 @@ a.button {
 #checkout {
     border: none;
 } 
-#checkout h3 {
+
+#checkout h3,
+#checkout p {
     margin-right: 11%;
 }
 
@@ -124,6 +126,7 @@ a.button {
 #shipping input {
     margin-top: 15px;
 }
+
 label[for='apt']  {
     margin-left: 15px;
 }

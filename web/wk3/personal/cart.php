@@ -29,8 +29,8 @@ $_SESSION['total'] = $total;
     <header class="flex-wrapper space-between">
         <h1>Cart</h1>
         <nav>
-            <a class='button warning' href='./destroy.php'>EMPTY CART</a>
-            <a class="button" href="./browse.php">browse</a>
+            <a class='button warning' href='./control.php?action=endSession'>Empty Cart</a>
+            <a class="button" href="./browse.php">Browse</a>
         </nav>
     </header>
     <div class="flex-wrapper" id='cart'>

@@ -43,7 +43,7 @@
     <header class="flex-wrapper space-between">
         <h1>Browse Items</h1>
         <nav>
-            <a class='button warning' href='./destroy.php'>EMPTY CART</a>
+            <a class='button warning' href='./control.php?action=endSession'>Empty Cart</a>
             <?php 
             if ($enabledCart === true) {
                 echo "<a class='button primary' href='./cart.php'>Cart</a>";

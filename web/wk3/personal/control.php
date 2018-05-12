@@ -3,6 +3,10 @@
 session_start();
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
+if (empty($action)) {
+    $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+}
+
 $location = './browse.php';
 
 
@@ -13,6 +17,9 @@ function testInput($data) {
     return $data;
   }
 
+if ($action === 'endSession') {
+    session_destroy();
+}
 
 /* IF they are adding an item */
 if (isset($_SESSION['existingSession']) && $action == 'addItem') {
@@ -32,7 +39,9 @@ if (isset($_SESSION['existingSession']) && $action == 'checkout') {
     
     /* save address */
     $_SESSION['name'] = testInput($_POST['name']);
+    $_SESSION['email'] = testInput($_POST['email']);
     $_SESSION['address'] = testInput($_POST['address']);
+    $_SESSION['state'] = testInput($_POST['state']);
     $_SESSION['zip'] = testInput($_POST['zip']);
     $_SESSION['shipping'] = testInput($_POST['shipping']);
 

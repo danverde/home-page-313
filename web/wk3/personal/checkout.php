@@ -26,10 +26,11 @@ $checkoutInfo;
     <header class="flex-wrapper space-between">
         <h1>Checkout</h1>
         <nav>
-            <a class='button' href='./cart.php'>CART</a>
+            <a class='button' href='./browse.php'>Browse</a>
+            <a class='button' href='./cart.php'>Cart</a>
         </nav>
     </header>
-    <h2>Summary</h2>
+    <h2>Item Summary</h2>
     <div class="flex-wrapper" id='summary'>
         <?php 
             foreach ($cart as $itemName => $item) {
@@ -51,6 +52,9 @@ $checkoutInfo;
                 <label for='name'>Name</label>
                 <input type='text' id='name' name='name' required>
                 <br>
+                <label for='email'>Email</label>
+                <input type='email' id='naemailmemaile' name='email' required>
+                <br>
                 <label for='address'>Address</label>
                 <input type='text' id='address' name='address' required>
                 <label for='apt'>Apt, Suite, etc.</label>
@@ -59,6 +63,8 @@ $checkoutInfo;
                 <label for='zip'>ZIP Code</label>
                 <input type='number' id='zip' name='zip' required>
                 <br>
+                <label for='state'>State</label>
+                <input type='text' id='state' name='state' required>
             </fieldset>
             <fieldset>
                 <legend>Shipping Method</legend>
