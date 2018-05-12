@@ -25,6 +25,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,22 +38,22 @@
         }
     </script>
 </head>
+
 <body>
     <header class="flex-wrapper space-between">
         <h1>Browse Items</h1>
         <nav>
-        <a class='button warning' href='./destroy.php'>EMPTY CART</a>
-            <a class="button" href="../../index.php#assignments">Home</a>
+            <a class='button warning' href='./destroy.php'>EMPTY CART</a>
             <?php 
             if ($enabledCart === true) {
-                echo "<a class='button' href='./cart.php'>Cart</a>";
+                echo "<a class='button primary' href='./cart.php'>Cart</a>";
             } else {
                 echo "<a class='button disabled'>Cart</a>";
             } ?>
         </nav>
-</header>
+    </header>
     <div class="flex-wrapper">
-            <?php 
+        <?php 
             foreach ($cart as $itemName => $item) {
                 echo "
                 <form action='control.php' method='POST' name='addItem'>
@@ -62,11 +63,15 @@
                     <p>".$itemName."</p>
                     <p>$".$item['price']."</p>
                     <p>".$item['quantity']."</p>
-                    <button class='button' onclick='addItem(this)'>Add Item</button>
+                    <button class='button' onclick='addItem()'>Add Item</button>
                 </div>
                 </form>";
             }
             ?>
     </div>
+    <footer>
+        <a class="button" href="../../index.php#assignments">Assignments</a>
+    </footer>
 </body>
+
 </html>
