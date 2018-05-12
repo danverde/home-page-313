@@ -14,9 +14,9 @@ body {
     padding: 20px;
     box-sizing: border-box;
     background-color: white;
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'roboto', sans-serif;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
 }
 
@@ -30,18 +30,24 @@ header {
 }
 
 footer {
-    width: calc(100% - 40px);
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
     background-color: var(--act-bg-color);
-    position: absolute;
     box-sizing: border-box;
-    bottom: 20px;
-    left: 20px;
-    height: 50px;
     padding: 15px;
-    margin: 0;
 }
 
 /* start templates */
+.borderless {
+    border: none !important;
+}
+
+h2.section {
+    border-bottom: 1px solid var(--act-bg-color);
+    margin-bottom:0;
+}
 
 .inline {
     display: inline-block;
@@ -61,6 +67,10 @@ footer {
 
 .flex-end {
     justify-content: flex-end;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
 }
 
 .space-around {
@@ -113,10 +123,6 @@ a.button {
 /* page specific! */
 
 /* CART */
-#checkout {
-    border: none;
-} 
-
 #checkout h3,
 #checkout p {
     margin-right: 11%;

@@ -1,9 +1,12 @@
 <?php 
     session_start();
-    $defaultCart = array('itemOne' => array('price' => 50, 'quantity' => 0 ),
-        'itemTwo' => array('price' => 200, 'quantity' => 0));
+    $defaultCart = array('Right Kidney' => array('price' => 145, 'quantity' => 0 ),
+        'Left Kidney' => array('price' => 150, 'quantity' => 0),
+        'Liver' => array('price' => 750, 'quantity' => 0),
+        'Heart' => array('price' => 4999, 'quantity' => 0),
+        'Band-Aid' => array('price' => .5, 'quantity' => 0),
+        'Spleen' => array('price' => 75, 'quantity' => 0));
 
-    // var_dump(session_id());
     if (!isset($_SESSION['existingSession'])) {
         // so I know if it's a new session or not.
         $_SESSION['existingSession'] = true;
@@ -44,12 +47,6 @@
         <h1>Browse Items</h1>
         <nav>
             <a class='button warning' href='./control.php?action=endSession'>Empty Cart</a>
-            <?php 
-            if ($enabledCart === true) {
-                echo "<a class='button primary' href='./cart.php'>Cart</a>";
-            } else {
-                echo "<a class='button disabled'>Cart</a>";
-            } ?>
         </nav>
     </header>
     <div class="flex-wrapper">
@@ -67,11 +64,22 @@
                 </div>
                 </form>";
             }
-            ?>
+        ?>
+        <div class='flex-wrapper row-reverse borderless' id='browse'>
+            <p>
+            <?php 
+            if ($enabledCart === true) {
+                echo "<a class='button primary' href='./cart.php'>Cart</a>";
+            } else {
+                echo "<a class='button disabled'>Cart</a>";
+            } ?>
+            </p>
+        </div>
     </div>
-    <footer>
-        <a class="button" href="../../index.php#assignments">Assignments</a>
-    </footer>
+    <h2>!IMPORTANT! WE DON'T ACTUALLY SELL, OR OFFICIATE WITH ANYONE WHO DOES SELL BODY PARTS OF ANY KIND!</h2>
+    <?php 
+        include_once './footer.php';
+    ?>
 </body>
 
 </html>

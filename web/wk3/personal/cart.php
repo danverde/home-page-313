@@ -33,6 +33,7 @@ $_SESSION['total'] = $total;
             <a class="button" href="./browse.php">Browse</a>
         </nav>
     </header>
+    <h2 class='section'>Items</h2>
     <div class="flex-wrapper" id='cart'>
         <?php 
             foreach ($cart as $itemName => $item) {
@@ -44,15 +45,15 @@ $_SESSION['total'] = $total;
                 </div>";
             }
             echo "
-            <div class='flex-wrapper flex-end' id='checkout'>
+            <div class='flex-wrapper flex-end borderless' id='checkout'>
                 <p>Total: \${$total}</p>
                 <a class='button primary' href='./checkout.php'>Checkout</a>
             </div>";
             ?>
     </div>
-    <footer>
-        <a class="button" href="../../index.php#assignments">Assignments</a>
-    </footer>
+    <?php 
+        include_once './footer.php';
+    ?>
 </body>
 
 </html>

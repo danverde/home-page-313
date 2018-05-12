@@ -83,9 +83,9 @@ $checkoutInfo;
             </div>
         </form>
     </div>
-    <footer>
-        <a class="button" href="../../index.php#assignments">Assignments</a>
-    </footer>
+    <?php 
+        include_once './footer.php';
+    ?>
 </body>
 
 </html>

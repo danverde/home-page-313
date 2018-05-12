@@ -38,7 +38,7 @@ $shipping = "{$_SESSION['shipping']} Days";
                 <a class='button primary' href='./control.php?action=endSession'>Done</a>
             </nav>
         </header>
-        <h2>Item Summary</h2>
+        <h2 class='section'>Item Summary</h2>
         <div class="flex-wrapper" id='summary'>
             <?php 
             foreach ($cart as $itemName => $item) {
@@ -51,7 +51,7 @@ $shipping = "{$_SESSION['shipping']} Days";
             }
         ?>
         </div>
-        <h2>Shipping Info</h2>
+        <h2 class='section'>Shipping Info</h2>
         <div id='shipping'>
             <p>Name: <?php echo $name; ?></p>
             <p>Email: <?php echo $email; ?></p>
@@ -60,14 +60,14 @@ $shipping = "{$_SESSION['shipping']} Days";
             <p>ZIP Code: <?php echo $zip; ?></p>
             <p>Shipping: <?php echo $shipping; ?></p>
         </div>
-        <h2>Total</h2>
-        <h3><?php echo $total; ?></h3>
-        <div class='flex-wrapper flex-end'>
+        <h2 class='section'>Total</h2>
+        <div class='flex-wrapper space-between'>
+            <h3><?php echo $total; ?></h3>
             <a class='button primary' href='./control.php?action=endSession'>Done</a>
         </div>
-        <footer>
-            <a class="button" href="../../index.php#assignments">Assignments</a>
-        </footer>
+        <?php 
+            include_once './footer.php';
+        ?>
     </body>
 
     </html>
