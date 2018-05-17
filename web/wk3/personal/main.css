@@ -1,19 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
 html {
-    --main-btn-color: #009f00;
-    --main-act-color: #d1bb9c;
+    --primary-btn-color: #009f00;
+    --main-btn-color:#206b1f;
     --main-bg-color: #ededed;
+    --act-bg-color: #d1bb9c;
     background-color: var(--main-bg-color);
 }
 
 body {
+    min-width: 800px;
     width: 75vw;
     margin: auto;
     padding: 20px;
     box-sizing: border-box;
     background-color: white;
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'roboto', sans-serif;
+    /* overflow: hidden; */
+    position: relative;
 }
 
 form {
@@ -21,11 +25,29 @@ form {
 }
 
 header {
-    background-color: var(--main-act-color);
+    background-color: var(--act-bg-color);
     padding: 0px 15px;
 }
 
+footer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    background-color: var(--act-bg-color);
+    box-sizing: border-box;
+    padding: 15px;
+}
+
 /* start templates */
+.borderless {
+    border: none !important;
+}
+
+h2.section {
+    border-bottom: 1px solid var(--act-bg-color);
+    margin-bottom:0;
+}
 
 .inline {
     display: inline-block;
@@ -43,6 +65,14 @@ header {
     /* display: inline-block; */
 }
 
+.flex-end {
+    justify-content: flex-end;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
 .space-around {
     justify-content: space-around;
 }
@@ -51,7 +81,8 @@ header {
     justify-content: space-between;
 }
 
-button.button {
+button.button,
+input.button {
     background-color: var(--main-btn-color);
     color: white;
     padding: 10px;
@@ -66,11 +97,12 @@ a.button {
     border-radius: 5px;
     padding: 10px;
     text-decoration: none;
+    user-select: none;
 }
 
-a.button:hover,
-button.button:hover {
+.button:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .button.disabled {
@@ -79,4 +111,28 @@ button.button:hover {
 
 .button.disabled:hover {
     text-decoration: none;
+}
+
+.button.primary {
+    background-color: var(--primary-btn-color);
+}
+.button.warning {
+    background-color: #d23c3c;
+}
+
+/* page specific! */
+
+/* CART */
+#checkout h3,
+#checkout p {
+    margin-right: 11%;
+}
+
+/* CONFIRM */
+#shipping input {
+    margin-top: 15px;
+}
+
+label[for='apt']  {
+    margin-left: 15px;
 }
