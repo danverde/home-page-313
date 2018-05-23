@@ -59,6 +59,10 @@
             <div class="sectionWrapper">
                 <h2 class="headline">Assignments</h2>
                 <h3>More Coming Weekly</h3>
+                <p>Project</p>
+                <ul>
+                    <li><a href="prj/index.php">Project</a></li>
+                </ul>
                 <p>Week 2</p>
                 <ul>
                     <li><a href="wk2/helloWorld.html">Hello World</a></li>
@@ -71,6 +75,10 @@
                 </ul>
                 <p>Week 4</p>
                 <p>Week 5</p>
+                <ul>
+                    <li><a href="wk5/team.php">Week 5 Team Activity</a></li>
+                    <li><a href="wk5/prj.php">Read Only Project</a></li>
+                </ul>
                 <p>Week 6</p>
                 <p>Week 7</p>
             </div>
