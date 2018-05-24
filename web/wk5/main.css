@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
+html {
+    --primary-btn-color: #009f00;
+    --secondary-btn-color:#0082ec;
+    --main-bg-color: #ededed;
+    --act-bg-color: #07074c;
+    background-color: var(--main-bg-color);
+}
+
+body {
+    box-sizing: border-box;
+    min-height: 100vh;
+    margin:0;
+    font-family: 'roboto', sans-serif;
+    position: relative;
+}
+
+form {
+    width: 100%;
+}
+
+header {
+    width: 100vw;
+    background-color: var(--act-bg-color);
+    color: white;
+}
+
+footer {
+    color: white;
+    background-color: var(--act-bg-color);
+    box-sizing: border-box;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+header a,
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover,
+footer a:hover {
+    text-decoration: underline;
+}
+
+main,
+.body-width {
+    width: 75vw;
+    min-width: 800px;
+    margin: auto;
+}
+
+.body-width {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+
+
+
+/* start templates */
+.borderless {
+    border: none !important;
+}
+
+h2.section {
+    border-bottom: 1px solid var(--act-bg-color);
+    margin-bottom:0;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.flex-wrapper div {
+    width: 100%;
+    border: 1px solid gray;
+    /* display: inline-block; */
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+button.button,
+input.button {
+    background-color: var(--secondary-btn-color);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+}
+
+a.button {
+    color: white;
+    background-color: var(--secondary-btn-color);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    user-select: none;
+}
+
+.button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.button.disabled {
+    background-color: gray;
+}
+
+.button.disabled:hover {
+    text-decoration: none;
+}
+
+.button.primary {
+    background-color: var(--primary-btn-color);
+}
+.button.warning {
+    background-color: #d23c3c;
+}
+
+/* page specific! */

@@ -77,7 +77,7 @@
                 <p>Week 5</p>
                 <ul>
                     <li><a href="wk5/team.php">Week 5 Team Activity</a></li>
-                    <li><a href="wk5/prj.php">Read Only Project</a></li>
+                    <li><a href="wk5/index.php">Read Only Project</a></li>
                 </ul>
                 <p>Week 6</p>
                 <p>Week 7</p>
