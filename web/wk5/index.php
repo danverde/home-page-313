@@ -1,6 +1,14 @@
 <?php 
 session_start();
 
+/* Redirecto to controller, get items from DB, return them to here */
+// if (!isset($_SESSION['itemTypes'])) {
+//     header("Location: ./controller.php?action=getItems");
+//     exit();
+// }
+
+// $itemTypes = $_SESSION['itemTypes'];
+$itemTypes = array('Motherboard', 'CPU', 'GPU');
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +23,16 @@ session_start();
 <body>
     <?php require 'header.php' ?>
     <main>
-            
+        <div class='main-banner'></div>
+        <div id="about">
+            <h1>Landing Message</h1>
+            <p>This is a super cool &amp; important message all about this website, computers, tacos, and other nerdy stuff. Yay! (Just kidding about the 🌮's... Sorry...)</p>
+        </div>
+        <div id="parts" class="flex-wrapper space-around">
+            <?php foreach ($itemTypes as $item) {
+                echo "<a class='button button-lg' href='./browse.php?item=$item'>$item</a>";  
+            }?>
+        </div>
     </main>
     <?php require 'footer.php' ?>
 </body>
