@@ -61,7 +61,7 @@ INSERT INTO item_type(item_type_name) VALUES('motherboard'),
                                         ('PSU');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'ASUS Z97-AR', 'An old motherboard...', 75, 'https://blooming-ocean-51278.herokuapp.com/images/97ar.jpg' FROM item_type WHERE item_type_name = 'motherboard');
+(SELECT item_type_id, 'ASUS Z97-AR', 'An old motherboard...', 75, './images/z97ar.jpg' FROM item_type WHERE item_type_name = 'motherboard');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'i3-4170', 'A really old processor...', 100, 'https://blooming-ocean-51278.herokuapp.com/images/i34170.jpg' FROM item_type WHERE item_type_name = 'CPU');
