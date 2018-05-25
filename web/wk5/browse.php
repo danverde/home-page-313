@@ -40,7 +40,7 @@ var_dump($items);
             </div>
             <?php 
             foreach ($items as $item) {
-                var_dump($item);
+                var_dump($item['name']);
                 echo "<div class='item-container' class='flex-wrapper space-around'>
                 <img src='".$item['image_location']."'>
                 <h4>".$image["name"]."</h4>
