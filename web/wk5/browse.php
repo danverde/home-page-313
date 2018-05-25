@@ -42,10 +42,10 @@ var_dump($items);
             foreach ($items as $item) {
                 var_dump($item);
                 echo "<div class='item-container' class='flex-wrapper space-around'>
-                <img src='$item['image_location']'>
-                <h4>$image['name']</h4>
-                <p class='price'>$item['price']</p>
-                <p>$item['description']</p>
+                <img src='".$item['image_location']."'>
+                <h4>".$image['name']."</h4>
+                <p class='price'>".$item['price']."</p>
+                <p>".$item['description']."</p>
                 <div>
                     <a class='button' href=''>Add to Build</a>
                 </div>
