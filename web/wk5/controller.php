@@ -24,6 +24,7 @@ $pdo = new PDO("pgsql:" . sprintf(
     $db["pass"],
     ltrim($db["path"], "/")
 ));
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $db = $pdo;
 
@@ -34,7 +35,7 @@ $db = $pdo;
 // var_dump($dbUser);
 // var_dump($dbPassword);
 var_dump($db);
-exit();
+// exit();
 
 session_start();
 
@@ -54,6 +55,10 @@ $location = './index.php';
 /* Start functions */
 function getItemTypes() {
     // $_SESSION['itemTypes'] = null;
+    var_dump($db);
+    exit();
+
+    
     try {
         $stmt = $db->prepare('SELECT item_type_name FROM item_type');
         $stmt->execute();
