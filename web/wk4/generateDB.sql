@@ -85,3 +85,9 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 (SELECT item_type_id, 'EVGA 600W', 'A bugget PSU that works great', 40, 'https://blooming-ocean-51278.herokuapp.com/images/evga600.jpg' FROM item_type WHERE item_type_name = 'PSU');
 
 INSERT INTO users(first_name, last_name, email, password) VALUES('Joe', 'Shmoe', 'shmoejoe47@gmail.com', 'dfghou436k=-45ios');
+
+
+SELECT name, description, price, image_location FROM items AS i 
+        JOIN item_type AS it
+        ON i.item_type_id = it.item_type_id
+        WHERE it.item_type_name = 'motherboard';

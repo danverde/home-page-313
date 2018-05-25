@@ -93,7 +93,7 @@ h2.section {
 
 .flex-wrapper div {
     width: 100%;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     /* display: inline-block; */
 }
 
