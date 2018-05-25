@@ -57,12 +57,14 @@ function browse($db) {
         $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($rows);
+        exit();
         $_SESSION['items'] = $rows;
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
 
-    header("location: ./browse.php");
+    header("location: ./browse.php?item=$item");
     exit();
 }
 
