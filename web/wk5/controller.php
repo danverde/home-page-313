@@ -43,6 +43,7 @@ function getItemTypes() {
         $_SESSION['itemTypes'] = $rows;
     } catch (PDOException $err) {
         $_SESSION['message'] = "Unable to get availible item types: $err";
+        $_SESSION['itemTypes'] = null;
     }
 
     $location = './index.php';
@@ -52,7 +53,7 @@ function getItemTypes() {
 /* chose action */
 switch ($action) {
     case 'getItemTypes':
-    //getItemTypes();
+    getItemTypes();
     break;
 }
 
