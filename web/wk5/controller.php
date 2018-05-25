@@ -14,6 +14,11 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+var_dump($dbHost);
+var_dump($dbPort);
+var_dump($dbName);
+var_dump($dbUser);
+var_dump($dbPassword);
 var_dump($db);
 exit();
 
