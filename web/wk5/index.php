@@ -7,8 +7,8 @@ if (!isset($_SESSION['itemTypes'])) {
     exit();
 }
 
-// $itemTypes = $_SESSION['itemTypes'];
-$itemTypes = array('Motherboard', 'CPU', 'GPU');
+// $itemTypes = array('Motherboard', 'CPU', 'GPU');
+$itemTypes = $_SESSION['itemTypes'];
 
 ?>
 <!DOCTYPE html>
