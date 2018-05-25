@@ -15,9 +15,6 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-
-var_dump($db);
-
 session_start();
 
 /* get action */
@@ -35,11 +32,7 @@ $location = './index.php';
 
 /* Start functions */
 function getItemTypes($db) {
-    // $_SESSION['itemTypes'] = null;
-    var_dump($db);
-    exit();
-
-
+    $_SESSION['itemTypes'] = null;
     try {
         $stmt = $db->prepare('SELECT item_type_name FROM item_type');
         $stmt->execute();
@@ -47,7 +40,6 @@ function getItemTypes($db) {
         $_SESSION['itemTypes'] = $rows;
     } catch (PDOException $err) {
         $_SESSION['message'] = "Unable to get availible item types: $err";
-        $_SESSION['itemTypes'] = null;
     }
 
     $location = './index.php';
