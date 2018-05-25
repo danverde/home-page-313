@@ -48,6 +48,7 @@ function browse($db) {
     if (empty($item)) {
         $item = 'motherboard';
     }
+    $item = strtolower($item);
 
     try {
         $stmt = $db->prepare('SELECT name, description, price, image_location FROM items AS i 
@@ -57,6 +58,7 @@ function browse($db) {
         $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($item);
         var_dump($rows);
         exit();
         $_SESSION['items'] = $rows;
