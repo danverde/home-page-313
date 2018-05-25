@@ -16,7 +16,7 @@ body {
     background-color: white;
     min-height: 100vh;
     font-family: 'roboto', sans-serif;
-    /* overflow: hidden; */
+    overflow-x: hidden;
     position: relative;
 }
 
