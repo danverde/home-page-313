@@ -64,10 +64,10 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 (SELECT item_type_id, 'ASUS Z97-AR', 'An old motherboard...', 75, './images/z97ar.jpg' FROM item_type WHERE item_type_name = 'motherboard');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'i3-4170', 'A really old processor...', 100, './images/i34170.jpg' FROM item_type WHERE item_type_name = 'CPU');
+(SELECT item_type_id, 'i3-4170', 'A really old processor...', 100, './images/i34170.jpg' FROM item_type WHERE item_type_name = 'cpu');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'GTX 1060 3GB', 'A great graphics card!', 250, './images/10603.jpg' FROM item_type WHERE item_type_name = 'GPU');
+(SELECT item_type_id, 'GTX 1060 3GB', 'A great graphics card!', 250, './images/10603.jpg' FROM item_type WHERE item_type_name = 'gpu');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'SAMSUNG 960EVO 250GB', 'An NVMe M.2 SSD', 120, './images/960evo.jpg' FROM item_type WHERE item_type_name = 'storage');
@@ -82,7 +82,7 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 (SELECT item_type_id, 'Hyper 212 Evo', 'A great air CPU cooler', 30, './images/212evo.jpg' FROM item_type WHERE item_type_name = 'fan');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'EVGA 600W', 'A bugget PSU that works great', 40, './images/evga600.jpg' FROM item_type WHERE item_type_name = 'PSU');
+(SELECT item_type_id, 'EVGA 600W', 'A bugget PSU that works great', 40, './images/evga600.jpg' FROM item_type WHERE item_type_name = 'psu');
 
 INSERT INTO users(first_name, last_name, email, password) VALUES('Joe', 'Shmoe', 'shmoejoe47@gmail.com', 'dfghou436k=-45ios');
 

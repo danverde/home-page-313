@@ -29,15 +29,6 @@ $items = $_SESSION['items'];
     <?php require 'header.php'; ?>
     <main>
         <div id='itemList' class='flex-wrapper space-around'>
-            <!-- <div class="item-container">
-                <img src="./images/z97ar.jpg">
-                <h4>Asus Z97-AR</h4>
-                <p class='price'>$99</p>
-                <p>Description</p>
-                <div>
-                    <a class="button" href="">Add to build</a>
-                </div>
-            </div> -->
             <?php 
             foreach ($items as $item) {
                 $name = $item['name'];

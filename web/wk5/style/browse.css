@@ -9,6 +9,7 @@
 .item-container img {
     float: right;
     max-width: 50%;
+    max-height: 351px;
 }
 
 .item-container .button {
