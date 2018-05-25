@@ -11,6 +11,8 @@ if (!isset($_SESSION['items'])) {
 $items = $_SESSION['items'];
 var_dump($items);
 
+$name = $items['name'];
+
 // $items = 
 
 ?>
@@ -40,10 +42,10 @@ var_dump($items);
             </div>
             <?php 
             foreach ($items as $item) {
-                var_dump($item['name']);
+                // var_dump($item['name']);
                 echo "<div class='item-container' class='flex-wrapper space-around'>
                 <img src='".$item['image_location']."'>
-                <h4>".$image["name"]."</h4>
+                <h4>".$name."</h4>
                 <p class='price'>$".$item['price']."</p>
                 <p>".$item['description']."</p>
                 <div>
