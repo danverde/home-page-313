@@ -52,22 +52,22 @@ ALTER TABLE users ADD build_id INT REFERENCES builds;
 
 -- START ADDING VALUES!
 INSERT INTO item_type(item_type_name) VALUES('motherboard'),
-                                        ('cpu'),
-                                        ('gpu'),
+                                        ('CPU'),
+                                        ('GPU'),
                                         ('storage'),
                                         ('memory'),
                                         ('tower'),
                                         ('fan'),
-                                        ('psu');
+                                        ('PSU');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'ASUS Z97-AR', 'An old motherboard...', 75, 'https://blooming-ocean-51278.herokuapp.com/images/97ar.jpg' FROM item_type WHERE item_type_name = 'motherboard');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'i3-4170', 'A really old processor...', 100, 'https://blooming-ocean-51278.herokuapp.com/images/i34170.jpg' FROM item_type WHERE item_type_name = 'cpu');
+(SELECT item_type_id, 'i3-4170', 'A really old processor...', 100, 'https://blooming-ocean-51278.herokuapp.com/images/i34170.jpg' FROM item_type WHERE item_type_name = 'CPU');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'GTX 1060 3GB', 'A great graphics card!', 250, 'https://blooming-ocean-51278.herokuapp.com/images/10603.jpg' FROM item_type WHERE item_type_name = 'gpu');
+(SELECT item_type_id, 'GTX 1060 3GB', 'A great graphics card!', 250, 'https://blooming-ocean-51278.herokuapp.com/images/10603.jpg' FROM item_type WHERE item_type_name = 'GPU');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'SAMSUNG 960EVO 250GB', 'An NVMe M.2 SSD', 120, 'https://blooming-ocean-51278.herokuapp.com/images/960evo.jpg' FROM item_type WHERE item_type_name = 'storage');
@@ -82,6 +82,6 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 (SELECT item_type_id, 'Hyper 212 Evo', 'A great air CPU cooler', 30, 'https://blooming-ocean-51278.herokuapp.com/images/212evo.jpg' FROM item_type WHERE item_type_name = 'fan');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'EVGA 600W', 'A bugget PSU that works great', 40, 'https://blooming-ocean-51278.herokuapp.com/images/evga600.jpg' FROM item_type WHERE item_type_name = 'psu');
+(SELECT item_type_id, 'EVGA 600W', 'A bugget PSU that works great', 40, 'https://blooming-ocean-51278.herokuapp.com/images/evga600.jpg' FROM item_type WHERE item_type_name = 'PSU');
 
 INSERT INTO users(first_name, last_name, email, password) VALUES('Joe', 'Shmoe', 'shmoejoe47@gmail.com', 'dfghou436k=-45ios');

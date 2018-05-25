@@ -7,7 +7,6 @@ if (!isset($_SESSION['itemTypes'])) {
     exit();
 }
 
-// $itemTypes = array('Motherboard', 'CPU', 'GPU');
 $itemTypes = $_SESSION['itemTypes'];
 
 ?>
@@ -32,9 +31,8 @@ $itemTypes = $_SESSION['itemTypes'];
         <div class='message'><p>This is a message!</p></div>
         <div id="parts" class="flex-wrapper space-around">
             <?php foreach ($itemTypes as $item) {
-                // var_dump($item);
                 $item = ucfirst($item['item_type_name']);
-                echo "<a class='button button-lg' href='./browse.php?item=$item'>$item's</a>";  
+                echo "<a class='button button-lg' href='./browse.php?item=$item'>".$item."s</a>";  
             }?>
         </div>
     </main>
