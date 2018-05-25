@@ -10,7 +10,7 @@ if (!isset($_SESSION['items'])) {
 //TODO enable me
 $items = $_SESSION['items'];
 
-$name = $items['name'];
+$name = $items[0]['name'];
 var_dump($name);
 
 // $items = 
