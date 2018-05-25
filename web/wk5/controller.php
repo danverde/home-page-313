@@ -26,9 +26,6 @@ if ($action == null) {
     $action = 'getItemTypes';
 }
 
-/* set default reedirect location */
-$location = './index.php';
-
 
 /* Start functions */
 function getItemTypes($db) {
@@ -42,8 +39,8 @@ function getItemTypes($db) {
         $_SESSION['message'] = "Unable to get availible item types: $err";
     }
 
-    $location = './index.php';
-    return;
+    header("location: ./index.php");
+    exit();
 }
 
 function browse($db) {
@@ -65,8 +62,8 @@ function browse($db) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
 
-    $location = './browse.php';
-    return;
+    header("location: ./browse.php");
+    exit();
 }
 
 
@@ -80,8 +77,8 @@ switch ($action) {
     browse($db);
     break;
 }
-
-header("location: $location");
+/* Go to home page by default */
+header("location: ./index.php");
 exit();
 
 ?>
