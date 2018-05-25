@@ -33,6 +33,7 @@ var_dump($itemTypes);
         <div class='message'><p>This is a message!</p></div>
         <div id="parts" class="flex-wrapper space-around">
             <?php foreach ($itemTypes as $item) {
+                $item = $item['iteem_type_mane'];
                 echo "<a class='button button-lg' href='./browse.php?item=$item'>$item</a>";  
             }?>
         </div>

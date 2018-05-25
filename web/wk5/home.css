@@ -18,4 +18,5 @@
 
 #parts a {
     width: calc((100% / 3) - 50px);
+    margin-bottom: 20px;
 }
