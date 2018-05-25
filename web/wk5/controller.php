@@ -1,7 +1,5 @@
 <?php
 // require './db.php';
-//var_dump($db);
-
 $dbUrl = getenv('DATABASE_URL');
 
 $dbopts = parse_url($dbUrl);
@@ -16,9 +14,7 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
 session_start();
-
 
 /* get action */
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
