@@ -1,41 +1,22 @@
 <?php
 // require './db.php';
-// $dbUrl = getenv('DATABASE_URL');
+$dbUrl = getenv('DATABASE_URL');
 
-// $dbopts = parse_url($dbUrl);
+$dbopts = parse_url($dbUrl);
 
-// $dbHost = $dbopts["host"];
-// $dbPort = $dbopts["port"];
-// $dbUser = $dbopts["user"];
-// $dbPassword = $dbopts["pass"];
-// $dbName = ltrim($dbopts["path"],'/');
+$dbHost = $dbopts["host"];
+$dbPort = $dbopts["port"];
+$dbUser = $dbopts["user"];
+$dbPassword = $dbopts["pass"];
+$dbName = ltrim($dbopts["path"],'/');
 
-// $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
-// $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$db = parse_url(getenv("DATABASE_URL"));
-
-$pdo = new PDO("pgsql:" . sprintf(
-    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
-    $db["host"],
-    $db["port"],
-    $db["user"],
-    $db["pass"],
-    ltrim($db["path"], "/")
-));
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$db = $pdo;
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-// var_dump($dbHost);
-// var_dump($dbPort);
-// var_dump($dbName);
-// var_dump($dbUser);
-// var_dump($dbPassword);
+
 var_dump($db);
-// exit();
 
 session_start();
 
@@ -53,12 +34,12 @@ $location = './index.php';
 
 
 /* Start functions */
-function getItemTypes() {
+function getItemTypes($db) {
     // $_SESSION['itemTypes'] = null;
     var_dump($db);
     exit();
 
-    
+
     try {
         $stmt = $db->prepare('SELECT item_type_name FROM item_type');
         $stmt->execute();
@@ -76,7 +57,7 @@ function getItemTypes() {
 /* chose action */
 switch ($action) {
     case 'getItemTypes':
-    getItemTypes();
+    getItemTypes($db);
     break;
 }
 
