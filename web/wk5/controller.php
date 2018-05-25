@@ -1,6 +1,8 @@
 <?php
 require './db.php';
 
+var_dump($db);
+
 session_start();
 
 
@@ -8,6 +10,9 @@ session_start();
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 if (empty($action)) {
     $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+}
+if ($action == null) {
+    $action = 'getItemTypes';
 }
 
 /* set default reedirect location */
@@ -30,10 +35,10 @@ function getItemTypes() {
     return;
 }
 
-/* chosee action */
+/* chose action */
 switch ($action) {
     case 'getItemTypes':
-    getItemTypes();
+    //getItemTypes();
     break;
 }
 
