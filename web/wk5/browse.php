@@ -2,14 +2,14 @@
 session_start();
 
 //TODO enable me
-// if (!isset($_SESSION['items'])) {
-//     header("Location: ./controller.php?action=browse");
-//     exit();
-// }
+if (!isset($_SESSION['items'])) {
+    header("Location: ./controller.php?action=browse");
+    exit();
+}
 
 //TODO enable me
-// $items = $_SESSION['items'];
-// var_dump($items);
+$items = $_SESSION['items'];
+var_dump($items);
 
 // $items = 
 
@@ -38,27 +38,20 @@ session_start();
                     <a class="button" href="">Add to build</a>
                 </div>
             </div>
-            <div class="item-container">
-                <h4>Name</h4>
-                <p>Description</p>
-                <p>$400</p>
-                <!-- <img> -->
-                <a class="button" href="">Add to build</a>
-            </div>
-            <div class="item-container">
-                <h4>Name</h4>
-                <p>Description</p>
-                <p>$400</p>
-                <!-- <img> -->
-                <a class="button" href="">Add to build</a>
-            </div>
-            <div class="item-container">
-                <h4>Name</h4>
-                <p>Description</p>
-                <p>$400</p>
-                <!-- <img> -->
-                <a class="button" href="">Add to build</a>
-            </div>
+            <?php 
+            foreach ($items as $item) {
+                var_dump($item);
+                echo "<div class='item-container' class='flex-wrapper space-around'>
+                <img src='$item['image_location]'>
+                <h4>$image['name']</h4>
+                <p class='price'>$item['price']</p>
+                <p>$item['description']</p>
+                <div>
+                    <a class='button' href=''>Add to Build</a>
+                </div>
+                </div>";
+            }
+            ?>
         </div>
     </main>
     <?php require 'footer.php'; ?>
