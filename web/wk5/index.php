@@ -9,6 +9,7 @@ if (!isset($_SESSION['itemTypes'])) {
 
 // $itemTypes = array('Motherboard', 'CPU', 'GPU');
 $itemTypes = $_SESSION['itemTypes'];
+var_dump($itemTypes);
 
 ?>
 <!DOCTYPE html>
