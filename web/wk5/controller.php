@@ -17,6 +17,19 @@ $location = './index.php';
 /* Start functions */
 function getItemTypes() {
     $_SESSION['itemTypes'] = null;
+    try {
+        $stmt = $db->prepare('SELECT item_type_name FROM item_type');
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($rows);
+        exit();
+    } catch (PDOException $err) {
+        $_SESSION['message'] = "Unable to get availible item types: $err";
+    }
+
+    $location = './index.php';
+
+
     return;
 }
 
