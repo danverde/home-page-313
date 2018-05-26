@@ -41,7 +41,7 @@ $items = $_SESSION['items'];
                 <p class='price'>$".$item['price']."</p>
                 <p>".$item['description']."</p>
                 <div>
-                    <a class='button' href=''>Add to Build</a>
+                    <p class='button disabled' >Add to Build</p>
                 </div>
                 </div>";
             }
