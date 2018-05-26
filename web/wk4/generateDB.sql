@@ -24,7 +24,7 @@ CREATE TABLE items
 (
     item_id SERIAL PRIMARY KEY,
     item_type_id INT REFERENCES item_type,
-    name VARCHAR(20) NOT NULL,
+    name VARCHAR(40) NOT NULL,
     description TEXT NOT NULL,
     price REAL NOT NULL,
     image_location VARCHAR(100)
@@ -113,3 +113,30 @@ OR bu.memory_id = i.item_id
 OR bu.tower_id = i.item_id
 OR bu.fan_id = i.item_id
 OR bu.psu_id = i.item_id;
+
+
+-- ADD ADDITIONAL ITEMS
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'ASUS ROG STRIX X299-E', 'An old motherboard...', 320, './images/x299e.jpg' FROM item_type WHERE item_type_name = 'motherboard');
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'i7-8700K', '3.7GHz LGA 1151', 350, './images/i78700K.jpg' FROM item_type WHERE item_type_name = 'cpu');
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'GTX 1080', '8GB Founders edition', 600, './images/1080.jpg' FROM item_type WHERE item_type_name = 'gpu');
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'WD Blue 1TB HDD', '7,200 RPM SATA III 6.0Gb/s 3.5" Internal Hard Drive', 52, './images/wd1t.jpg' FROM item_type WHERE item_type_name = 'storage');
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'G.Skill Trident Z RGB', '16GB 2 x 8GB DDR4-3200 PC4-25600 CL16 Dual Channel', 210, './images/tridentz.jpg' FROM item_type WHERE item_type_name = 'memory');
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'Thermaltake View 71 RGB', 'Full-Tower RGB fans. Glass sides', 180, './images/71rgb.jpg' FROM item_type WHERE item_type_name = 'tower');
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'Corsair Hydro Series H110i', 'Liquid cooling. Dual fan radiator', 109, './images/H110i.jpg' FROM item_type WHERE item_type_name = 'fan');
+
+INSERT INTO items(item_type_id, name, description, price, image_location) 
+(SELECT item_type_id, 'Corsair RM750x', '750 Watt 80 Plus Gold ATX Modular Power Supply', 119, './images/rm750x.jpg' FROM item_type WHERE item_type_name = 'psu');
