@@ -32,7 +32,7 @@ $itemTypes = $_SESSION['itemTypes'];
         <div id="parts" class="flex-wrapper space-around">
             <?php foreach ($itemTypes as $item) {
                 $item = ucfirst($item['item_type_name']);
-                echo "<a class='button button-lg' href='./controller.php?action=browse&item=$item'>".$item."s</a>";  
+                echo "<a class='button button-lg' href='./controller.php?action=browse&item=$item'>".$item."</a>";  
             }?>
         </div>
     </main>

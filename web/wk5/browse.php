@@ -28,6 +28,7 @@ $items = $_SESSION['items'];
 <body>
     <?php require 'header.php'; ?>
     <main>
+        <h1> Browse </h1>
         <div id='itemList' class='flex-wrapper space-around'>
             <?php 
             foreach ($items as $item) {

@@ -4,7 +4,7 @@ $message = $_SESSION['message'];
 ?>
 <header>
     <div class='body-width'>
-        <h1>PC Builder</h1>
+        <h1><a href='./index.php'>PC Builder</a></h1>
         <nav>
             <a class="button btn-primary" href="">My Build</a>
         </nav>
