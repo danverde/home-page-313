@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-// TESTING
-var_dump($_SESSION['build']);
 
 if (!isset($_SESSION['build'])) {
     header("location: ./controller.php?action=getBuild");
@@ -45,6 +43,13 @@ $total = 0;
                     $name = $item['name'];
                     $component = $item['item_type_name'];
                     $total += $price;
+
+                    if ($name === 'cpu' || $name === 'gpu' || $name === 'psu') {
+                        $name = strtoupper($name);
+                    } else {
+                        $name = ucfirst($name);
+                    }
+
                     echo "<tr>
                         <td>$component</td>
                         <td>$name</td>
@@ -53,12 +58,6 @@ $total = 0;
                     </tr>";
                 }
                 ?>
-                <tr>
-                    <td>Motherboard</td>
-                    <td>Asus Z97-AR</td>
-                    <td>1x</td>
-                    <td>$100</td>
-                </tr>
             </tbody>
             <tfoot>
                 <tr>
