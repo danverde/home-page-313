@@ -121,7 +121,7 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 (SELECT item_type_id, 'ASUS ROG STRIX X299-E', 'An old motherboard...', 320, './images/x299e.jpg' FROM item_type WHERE item_type_name = 'motherboard');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'i7-8700K', '3.7GHz LGA 1151', 350, './images/i78700K.jpg' FROM item_type WHERE item_type_name = 'cpu');
+(SELECT item_type_id, 'i7-8700K', '3.7GHz LGA 1151', 350, './images/i78700k.jpg' FROM item_type WHERE item_type_name = 'cpu');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'GTX 1080', '8GB Founders edition', 600, './images/1080.jpg' FROM item_type WHERE item_type_name = 'gpu');
@@ -136,7 +136,7 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 (SELECT item_type_id, 'Thermaltake View 71 RGB', 'Full-Tower RGB fans. Glass sides', 180, './images/71rgb.jpg' FROM item_type WHERE item_type_name = 'tower');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
-(SELECT item_type_id, 'Corsair Hydro Series H110i', 'Liquid cooling. Dual fan radiator', 109, './images/H110i.jpg' FROM item_type WHERE item_type_name = 'fan');
+(SELECT item_type_id, 'Corsair Hydro Series H110i', 'Liquid cooling. Dual fan radiator', 109, './images/h110i.jpg' FROM item_type WHERE item_type_name = 'fan');
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'Corsair RM750x', '750 Watt 80 Plus Gold ATX Modular Power Supply', 119, './images/rm750x.jpg' FROM item_type WHERE item_type_name = 'psu');
