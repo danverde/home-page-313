@@ -155,6 +155,7 @@ a.button {
 }
 
 .button.btn-disabled {
+    color: white;
     background-color: gray;
 }
 
