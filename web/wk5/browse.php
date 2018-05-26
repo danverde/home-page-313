@@ -1,9 +1,13 @@
 <?php
 session_start();
 
-//TODO enable me
-if (!isset($_SESSION['items'])) {
+$item = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
+
+if (!isset($item) || !isset($_SESSION['items'])) {
     header("Location: ./controller.php?action=browse");
+    exit();
+} else {
+    header("Location: ./controller.php?action=browse&item=$item");
     exit();
 }
 

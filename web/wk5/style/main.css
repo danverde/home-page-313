@@ -160,6 +160,7 @@ a.button {
 
 .button.btn-disabled:hover {
     text-decoration: none;
+    cursor: default;
 }
 
 .button.btn-primary {
