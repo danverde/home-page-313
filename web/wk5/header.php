@@ -12,7 +12,7 @@ $message = $_SESSION['message'];
     </div>
 </header>
 <?php
-    if(!isset($meessage)) {
-        echo "<h2>$message</h2>";
-    }
+    // if(!isset($meessage)) {
+    //     echo "<h2>$message</h2>";
+    // }
 ?>

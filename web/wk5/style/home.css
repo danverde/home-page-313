@@ -14,9 +14,10 @@
 
 #parts {
     width: 100%;
+    align-content: flex-start;
 }
 
 #parts a {
     width: calc((100% / 3) - 50px);
-    margin-bottom: 20px;
+    margin: 10px;
 }
