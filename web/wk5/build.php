@@ -44,10 +44,10 @@ $total = 0;
                     $component = $item['item_type_name'];
                     $total += $price;
 
-                    if ($name === 'cpu' || $name === 'gpu' || $name === 'psu') {
-                        $name = strtoupper($name);
+                    if ($$component === 'cpu' || $$component === 'gpu' || $$component === 'psu') {
+                        $$component = strtoupper($$component);
                     } else {
-                        $name = ucfirst($name);
+                        $$component = ucfirst($$component);
                     }
 
                     echo "<tr>
