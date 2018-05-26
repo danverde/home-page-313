@@ -28,20 +28,20 @@ $itemTypes = $_SESSION['itemTypes'];
             <h1>Landing Message</h1>
             <p>This is a super cool &amp; important message all about this website, computers, tacos, and other nerdy stuff. Yay! (Just kidding about the 🌮's... Sorry...)</p>
         </div>
-        <div class='message'><p>This is a message!</p></div>
+        <!-- <div class='message'><p>This is a message!</p></div> -->
         <div id="parts" class="flex-wrapper">
             <?php foreach ($itemTypes as $item) {
                 $item = $item['item_type_name'];
                 if ($item === 'cpu' || $item === 'gpu' || $item === 'psu') {
-                    $item = strtoupper($item)."s";
+                    $itemTitle = strtoupper($item)."s";
                 } else {
-                    $item = ucfirst($item);
+                    $itemTitle = ucfirst($item);
                     if ($item !== 'Storage' && $item !== 'Memory') {
-                        $item = ucfirst($item).'s';
+                        $itemTitle = ucfirst($item).'s';
                     }
                 }
 
-                echo "<a class='button button-lg' href='./controller.php?action=browse&item=$item'>".$item."</a>";  
+                echo "<a class='button button-lg' href='./controller.php?action=browse&item=$item'>".$itemTitle."</a>";  
             }?>
         </div>
     </main>
