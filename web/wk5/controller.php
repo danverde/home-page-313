@@ -101,7 +101,7 @@ switch ($action) {
     browse($db);
     break;
 
-    case: 'getBuild':
+    case 'getBuild':
     getBuild($db);
     break;
 }
