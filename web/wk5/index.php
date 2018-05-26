@@ -33,9 +33,12 @@ $itemTypes = $_SESSION['itemTypes'];
             <?php foreach ($itemTypes as $item) {
                 $item = $item['item_type_name'];
                 if ($item === 'cpu' || $item === 'gpu' || $item === 'psu') {
-                    $item = strtoupper($item);
+                    $item = strtoupper($item)."s";
                 } else {
                     $item = ucfirst($item);
+                    if ($item !== 'Storage' && $item !== 'Memory') {
+                        $item = ucfirst($item).'s';
+                    }
                 }
 
                 echo "<a class='button button-lg' href='./controller.php?action=browse&item=$item'>".$item."</a>";  
