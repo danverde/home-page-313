@@ -6,7 +6,7 @@ $item = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
 if (!isset($item)) {
     header("Location: ./controller.php?action=browse");
     exit();
-} else if (!isset($_SESSION['items'])){
+} else if (!isset($_SESSION['items'] || isset($_SESSION['itemType'] !== $item)){
     header("Location: ./controller.php?action=browse&item=$item");
     exit();
 }

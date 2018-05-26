@@ -35,6 +35,7 @@ function browse($db) {
         $item = 'motherboard';
     }
     $item = strtolower($item);
+    $_SESSION['itemType'] = $item;
 
     try {
         $stmt = $db->prepare('SELECT name, description, price, image_location FROM items AS i 
