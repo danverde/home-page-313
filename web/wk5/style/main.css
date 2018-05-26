@@ -2,7 +2,7 @@
 html {
     --primary-btn-color: #0082ec;
     --secondary-btn-color:#131397;
-    --hover-btn-color: green;
+    --hover-btn-color: #2f2f8e;
     --main-bg-color: #ededed;
     --act-bg-color: #07074c;
     background-color: var(--main-bg-color);
@@ -172,7 +172,7 @@ a.button {
 }
 
 .button.btn-warning {
-    background-color: #d23c3c;
+    background-color: var(--hover-btn-color);
 }
 
 .button-lg {
