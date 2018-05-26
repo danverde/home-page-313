@@ -1,10 +1,18 @@
 <?php
 session_start();
+
+// TESTING
 var_dump($_SESSION['build']);
+
 if (!isset($_SESSION['build'])) {
     header("location: ./controller.php?action=getBuild");
 exit();
 }
+
+
+$build = $_SESSION['build'];
+$total = 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +39,20 @@ exit();
                 </tr>
             </thead>
             <tbody>
+                <?php 
+                foreach ($build as $item) {
+                    $price = $item['price'];
+                    $name = $item['name'];
+                    $component = $item['item_type_name'];
+                    $total += $price;
+                    echo "<tr>
+                        <td>$component</td>
+                        <td>$name</td>
+                        <td>1x</td>
+                        <td>$$price</td>
+                    </tr>";
+                }
+                ?>
                 <tr>
                     <td>Motherboard</td>
                     <td>Asus Z97-AR</td>
@@ -43,7 +65,7 @@ exit();
                     <td></td>
                     <td></td>
                     <th>Total:</th>
-                    <td>$900</td>
+                    <td>$<?php echo $total;?></td>
                 </tr>
             </tfoot>
         </table>
