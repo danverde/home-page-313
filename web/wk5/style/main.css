@@ -150,7 +150,7 @@ a.button {
 
 .button:hover {
     /* text-decoration: underline; */
-    background-color: red;
+    background-color: var(--hover-btn-color);
     cursor: pointer;
 }
 
