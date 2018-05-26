@@ -1,7 +1,13 @@
 <?php 
 session_start();
 $message = $_SESSION['message'];
+
+if(!isset($_SESSION['userId'])) {
+    header("location: ./controller.php");
+    exit();
+}
 ?>
+
 <header>
     <div class='body-width'>
         <h1><a href='./index.php'>PC Builder</a></h1>
@@ -11,8 +17,3 @@ $message = $_SESSION['message'];
         </nav>
     </div>
 </header>
-<?php
-    // if(!isset($meessage)) {
-    //     echo "<h2>$message</h2>";
-    // }
-?>

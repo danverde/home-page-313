@@ -12,6 +12,10 @@ if ($action == null) {
     $action = 'getItemTypes';
 }
 
+// if no user is provided, log in as default user
+if (!isset($_SESSION['userId'])) {
+    $_SESSION['userId'] = 1;
+}
 
 /* Start functions */
 function getItemTypes($db) {
@@ -54,6 +58,38 @@ function browse($db) {
     exit();
 }
 
+function getBuild($db) {
+    $userId = $_SESSION['userId'];
+    /* UserId must not be empty */
+    if (!isset($userId)) {
+        return;
+    }
+
+    try {
+        $stmt = $db->prepare('SELECT i.name, i.price, it.item_type_name
+        FROM items AS i
+        INNER JOIN builds AS bu ON (bu.user_id=:userId)
+        INNER JOIN item_type AS it ON (it.item_type_id = i.item_type_id)
+        WHERE bu.motherboard_id = i.item_id
+        OR bu.cpu_id = i.item_id
+        OR bu.gpu_id = i.item_id
+        OR bu.storage_id = i.item_id
+        OR bu.memory_id = i.item_id
+        OR bu.tower_id = i.item_id
+        OR bu.fan_id = i.item_id
+        OR bu.psu_id = i.item_id;');
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $_SESSION['build'] = $rows;
+
+    } catch(PDOException $err) {
+        $_SESSION['message'] = "Unable to get items: $err";
+    }
+
+    header("location: ./build.php");
+    exit();
+}
 
 /* chose action */
 switch ($action) {
@@ -63,6 +99,10 @@ switch ($action) {
 
     case 'browse':
     browse($db);
+    break;
+
+    case: 'getBuild':
+    getBuild($db);
     break;
 }
 /* Go to home page by default */

@@ -33,7 +33,7 @@ CREATE TABLE items
 CREATE TABLE builds
 (
     build_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users NOT NULL,
+    user_id INT REFERENCES users NOT NULL UNIQUE,
     motherboard_id INT REFERENCES items,
     cpu_id INT REFERENCES items,
     gpu_id INT REFERENCES items,
@@ -43,6 +43,7 @@ CREATE TABLE builds
     memory_id INT REFERENCES items,
     memory_count INT,
     storage_id INT REFERENCES items,
+    storage_count INT,
     tower_id INT REFERENCES items,
     psu_id INT REFERENCES items
 );
@@ -84,10 +85,31 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'EVGA 600W', 'A bugget PSU that works great', 40, './images/evga600.jpg' FROM item_type WHERE item_type_name = 'psu');
 
-INSERT INTO users(first_name, last_name, email, password) VALUES('Joe', 'Shmoe', 'shmoejoe47@gmail.com', 'dfghou436k=-45ios');
+
+
+INSERT INTO users(first_name, last_name, email, password) VALUES('Default', 'User', 'shmoejoe47@gmail.com', 'dfghou436k=-45ios');
 
 
 SELECT name, description, price, image_location FROM items AS i 
         JOIN item_type AS it
         ON i.item_type_id = it.item_type_id
         WHERE it.item_type_name = 'motherboard';
+
+-- TODO Clean this up. It should be dynamic...
+INSERT INTO builds(user_id, motherboard_id, cpu_id, gpu_id, gpu_count, fan_id, fan_count, memory_id, memory_count, storage_id, tower_id, psu_id)
+(SELECT user_id, 1, 2, 3, 2, 7, 1, 5, 4, 4, 6, 8 FROM users WHERE user_id=1);
+
+
+
+SELECT i.name, i.price, it.item_type_name
+FROM items AS i
+INNER JOIN builds AS bu ON (bu.user_id = 1)
+INNER JOIN item_type AS it ON (it.item_type_id = i.item_type_id)
+WHERE bu.motherboard_id = i.item_id
+OR bu.cpu_id = i.item_id
+OR bu.gpu_id = i.item_id
+OR bu.storage_id = i.item_id
+OR bu.memory_id = i.item_id
+OR bu.tower_id = i.item_id
+OR bu.fan_id = i.item_id
+OR bu.psu_id = i.item_id;
