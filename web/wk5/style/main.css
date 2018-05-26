@@ -2,6 +2,7 @@
 html {
     --primary-btn-color: #0082ec;
     --secondary-btn-color:#131397;
+    --hover-btn-color: green;
     --main-bg-color: #ededed;
     --act-bg-color: #07074c;
     background-color: var(--main-bg-color);
@@ -72,7 +73,11 @@ img {
     max-width: 75vw;
 }
 
-/* start templates */
+header nav a {
+    margin-left: 10px;
+}
+
+/*** START TEMPLATES ***/
 .borderless {
     border: none !important;
 }
@@ -117,6 +122,12 @@ h2.section {
     justify-content: space-between;
 }
 
+p.button {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px;
+}
+
 button.button,
 input.button {
     background-color: var(--secondary-btn-color);
@@ -138,22 +149,29 @@ a.button {
 }
 
 .button:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    background-color: red;
     cursor: pointer;
 }
 
-.button.disabled {
+.button.btn-disabled {
     background-color: gray;
 }
 
-.button.disabled:hover {
+.button.btn-disabled:hover {
     text-decoration: none;
 }
 
 .button.btn-primary {
     background-color: var(--primary-btn-color);
 }
-.button.warning {
+
+.button.btn-primary:hover {
+    background-color: var(--hover-btn-color);
+    text-decoration: none;
+}
+
+.button.btn-warning {
     background-color: #d23c3c;
 }
 
