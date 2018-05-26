@@ -36,7 +36,7 @@ $itemTypes = $_SESSION['itemTypes'];
                     $itemTitle = strtoupper($item)."s";
                 } else {
                     $itemTitle = ucfirst($item);
-                    if ($item !== 'Storage' && $item !== 'Memory') {
+                    if ($itemTitle !== 'Storage' && $itemTitle !== 'Memory') {
                         $itemTitle = ucfirst($item).'s';
                     }
                 }
