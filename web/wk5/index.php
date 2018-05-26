@@ -31,7 +31,13 @@ $itemTypes = $_SESSION['itemTypes'];
         <div class='message'><p>This is a message!</p></div>
         <div id="parts" class="flex-wrapper">
             <?php foreach ($itemTypes as $item) {
-                $item = ucfirst($item['item_type_name']);
+                $item = $item['item_type_name'];
+                if ($item === 'cpu' || $item === 'gpu' || $item === 'psu') {
+                    $item = strtoupper($item);
+                } else {
+                    $item = ucfirst($item);
+                }
+
                 echo "<a class='button button-lg' href='./controller.php?action=browse&item=$item'>".$item."</a>";  
             }?>
         </div>
