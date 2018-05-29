@@ -48,7 +48,7 @@ session_start();
         <input id='verse' type='text'>
         <br>
         <label for='content'>Content</label>
-        <textarea id='content'><textarea>
+        <textarea id='content'></textarea>
         <br>
         <?php
         var_dump($topics);
