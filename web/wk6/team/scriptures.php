@@ -20,7 +20,6 @@ session_start();
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
     $topics = filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
     
-    var_dump($_POST);
 
 
     try {
@@ -30,15 +29,21 @@ session_start();
         $stmt->bindValue(':verse', $verse, PDO::PARAM_STR);
         $stmt->bindValue(':content', $content, PDO::PARAM_STR);
         $stmt->execute();
+
         $scriptureId = $pdo->lastInsertId('scripture_id_seq');
 
         var_dump($scriptureId);
         var_dump($topics);
-        die();
-        // $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($topics as $topic) {
+            var_dump($topic);
+            $stmt = $db->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES(:scrId, :topId)');
+            $stmt->bindValue(':scrId', $scriptureId, PDO::PARAM_STR);
+            $stmt->bindValue(':topId', $topic, PDO::PARAM_STR);
+            $stmt->execute();
+        }
     
 
-        // var_dump($topics);
     } catch (Exception $err) {
         echo "I died";
         echo $err;

@@ -14,7 +14,7 @@ session_start();
 
 
     try {
-        $stmt = $db->prepare('SELECT name FROM topics');
+        $stmt = $db->prepare('SELECT name, topic_id FROM topics');
         $stmt->execute();
         $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -52,8 +52,9 @@ session_start();
         <?php
         // var_dump($topics);
         foreach ($topics as $topic) {
-            $topic = $topic['name'];
-            echo "<input type='checkbox' name='topics' value='$topic'> $topic <br>";
+            $topicName = $topic['name'];
+            $topicId = $topic['topic_id'];
+            echo "<input type='checkbox' name='topics' value='$topicId'> $topicName <br>";
         }
 
         ?>
