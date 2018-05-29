@@ -13,7 +13,6 @@ session_start();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-
     try {
         $stmt = $db->prepare('SELECT name FROM topics');
         $stmt->execute();
@@ -37,7 +36,7 @@ session_start();
 </head>
 
     <body>
-        <form method="POST" action="">
+        <form method="POST" action="scriptures.php">
         <label for='book'>Book</label>
         <input id='book' type='text'>
         <br>
@@ -54,7 +53,7 @@ session_start();
         // var_dump($topics);
         foreach ($topics as $topic) {
             $topic = $topic['name'];
-            echo "<input type='checkbox' name='topics' value='$topic'> $topic";
+            echo "<input type='checkbox' name='topics' value='$topic'> $topic <br>";
         }
 
         ?>
