@@ -15,7 +15,7 @@ session_start();
     $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
     $chapter = filter_input(INPUT_POST, 'chapter', FILTER_SANITIZE_STRING);
     $verse = filter_input(INPUT_POST, 'verse', FILTER_SANITIZE_STRING);
-    $contents = filter_input(INPUT_POST, 'contents', FILTER_SANITIZE_STRING);
+    $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
     $topics = filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
 
     
