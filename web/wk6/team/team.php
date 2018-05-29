@@ -19,7 +19,7 @@ session_start();
         $stmt->execute();
         $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        var_dump($topics);
+        // var_dump($topics);
     } catch (Exception $err) {
         echo "I died";
         die();
@@ -51,9 +51,9 @@ session_start();
         <textarea id='content'></textarea>
         <br>
         <?php
-        var_dump($topics);
+        // var_dump($topics);
         foreach ($topics as $topic) {
-            echo "<input type='checkbox' name='topics' value='$topic'>";
+            echo "<input type='checkbox' name='topics' value='$topic'> $topic";
         }
 
         ?>
