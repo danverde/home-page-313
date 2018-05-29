@@ -42,6 +42,7 @@ function browse($db) {
     $_SESSION['itemType'] = $item;
 
     try {
+        /* get rows */
         $stmt = $db->prepare('SELECT name, description, price, image_location FROM items AS i 
         JOIN item_type AS it
         ON i.item_type_id = it.item_type_id
@@ -49,6 +50,20 @@ function browse($db) {
         $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        /* get build */
+        var_dump($_SESSION['userId']);
+        die();
+        $idToGrab = $item."_id";
+
+        // TODO there's got to be a better way to do this...
+        $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
+        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
         $_SESSION['items'] = $rows;
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
