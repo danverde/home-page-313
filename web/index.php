@@ -77,9 +77,12 @@
                 <p>Week 5</p>
                 <ul>
                     <li><a href="wk5/team.php">Week 5 Team Activity</a></li>
-                    <li><a href="wk5/index.php">Read Only Project</a></li>
+                    <li><a href="wk5/index.php">Read Only PHP Project</a></li>
                 </ul>
                 <p>Week 6</p>
+                <ul>
+                    <li><a href="wk6/index.php">Read Write PHP Project</a></li>
+                </ul>
                 <p>Week 7</p>
             </div>
         </section>
