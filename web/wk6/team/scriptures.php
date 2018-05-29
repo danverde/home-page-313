@@ -38,6 +38,7 @@ session_start();
         // var_dump($topics);
     } catch (Exception $err) {
         echo "I died";
+        echo $err;
         die();
     }
 
