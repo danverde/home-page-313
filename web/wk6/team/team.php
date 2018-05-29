@@ -53,6 +53,7 @@ session_start();
         <?php
         // var_dump($topics);
         foreach ($topics as $topic) {
+            var_dump($topic);
             echo "<input type='checkbox' name='topics' value='$topic'> $topic";
         }
 
