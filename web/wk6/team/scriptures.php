@@ -18,11 +18,9 @@ session_start();
     $chapter = filter_input(INPUT_POST, 'chapter', FILTER_SANITIZE_STRING);
     $verse = filter_input(INPUT_POST, 'verse', FILTER_SANITIZE_STRING);
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
-    $topics = $_POST['topics'];//filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
+    $topics = filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
+    // $topics = $_POST['topics'];//filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
     
-    var_dump($topics);
-
-
     try {
         $stmt = $db->prepare('INSERT INTO scriptures(book, chapter, verse, content) VALUES(:book, :chapter, :verse, :content)');
         $stmt->bindValue(':book', $book, PDO::PARAM_STR);
@@ -33,12 +31,7 @@ session_start();
 
         $scriptureId = $db->lastInsertId('scriptures_id_seq');
 
-        // var_dump($scriptureId);
-        // var_dump($topics);
-
         foreach ($topics as $topic) {
-            var_dump($topic);
-
             $stmt = $db->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES(:scrId, :topId)');
             $stmt->bindValue(':scrId', $scriptureId, PDO::PARAM_STR);
             $stmt->bindValue(':topId', $topic, PDO::PARAM_STR);
@@ -52,6 +45,17 @@ session_start();
         die();
     }
 
+
+    try {
+        $stmt = $db->prepare('SELECT name, book, chapter, verse, content FROM scriptures');
+        $stmt->execute();
+        $scriptures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (Exception $err) {
+        echo "I died later";
+        echo $err;
+        die();
+    }
 
 ?>
 

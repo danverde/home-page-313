@@ -32,3 +32,7 @@ CREATE TABLE scripture_topic (
 );
 
 INSERT INTO scripture_topic VALUES(1,1);
+
+SELECT * FROM scriptures AS s 
+JOIN scripture_topic AS st ON s.id = st.scripture_id 
+JOIN topics AS t ON t.topic_id=st.topic_id;
