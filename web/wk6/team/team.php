@@ -13,13 +13,16 @@ session_start();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-    
+
     try {
         $stmt = $db->prepare('SELECT name FROM topics');
         $stmt->execute();
         $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        var_dump($topics);
     } catch (Exception $err) {
         echo "I died";
+        die();
     }
 
 
@@ -45,9 +48,10 @@ session_start();
         <input id='verse' type='text'>
         <br>
         <label for='content'>Content</label>
-        <textarea id='content'>
+        <textarea id='content'><textarea>
         <br>
         <?php
+        var_dump($topics);
         foreach ($topics as $topic) {
             echo "<input type='checkbox' name='topics' value='$topic'>";
         }
