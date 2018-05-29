@@ -20,6 +20,7 @@ session_start();
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
     $topics = $_POST['topics'];//filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
     
+    var_dump($topics);
 
 
     try {
