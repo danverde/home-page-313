@@ -18,6 +18,11 @@ session_start();
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
     $topics = filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
 
+
+    var_dump($book);
+    var_dump($chapter);
+    var_dump($verse);
+    var_dump($content);
     
     try {
         $stmt = $db->prepare('INSERT INTO scriptures(book, chapter, verse, content) VALUES(:book, :chapter, :verse, :content)');
