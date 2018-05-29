@@ -2,8 +2,6 @@
 <?php 
 session_start();
 
-$
-
     $dbUrl = getenv('DATABASE_URL');
     $dbopts = parse_url($dbUrl);
     $dbHost = $dbopts["host"];
