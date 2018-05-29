@@ -19,12 +19,6 @@ session_start();
     $verse = filter_input(INPUT_POST, 'verse', FILTER_SANITIZE_STRING);
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
     $topics = filter_input(INPUT_POST, 'topics', FILTER_SANITIZE_STRING);
-
-
-    var_dump($book);
-    var_dump($chapter);
-    var_dump($verse);
-    var_dump($content);
     
     var_dump($_POST);
 
@@ -34,7 +28,7 @@ session_start();
         $stmt->bindValue(':book', $book, PDO::PARAM_STR);
         $stmt->bindValue(':chapter', $chapter, PDO::PARAM_STR);
         $stmt->bindValue(':verse', $verse, PDO::PARAM_STR);
-        $stmt->bindValue(':content', $contents, PDO::PARAM_STR);
+        $stmt->bindValue(':content', $content, PDO::PARAM_STR);
         $stmt->execute();
         $scriptureId = $pdo->lastInsertId('scripture_id_seq');
 
