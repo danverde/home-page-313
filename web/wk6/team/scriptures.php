@@ -30,7 +30,7 @@ session_start();
         $stmt->bindValue(':content', $content, PDO::PARAM_STR);
         $stmt->execute();
 
-        $scriptureId = $db->lastInsertId('scripture_id_seq');
+        $scriptureId = $db->lastInsertId('scriptures_id_seq');
 
         var_dump($scriptureId);
         var_dump($topics);
