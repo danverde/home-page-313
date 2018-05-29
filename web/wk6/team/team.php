@@ -54,7 +54,7 @@ session_start();
         foreach ($topics as $topic) {
             $topicName = $topic['name'];
             $topicId = $topic['topic_id'];
-            echo "<input type='checkbox' name='topics' value='$topicId'> $topicName <br>";
+            echo "<input type='checkbox' name='topics[]' value='$topicId'> $topicName <br>";
         }
 
         ?>
