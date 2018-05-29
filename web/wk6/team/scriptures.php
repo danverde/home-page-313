@@ -21,7 +21,6 @@ session_start();
     
     try {
         $stmt = $db->prepare('INSERT INTO scriptures(book, chapter, verse, content) VALUES(:book, :chapter, :verse, :content)');
-        $stmt->execute();
         $stmt->bindValue(':book', $book, PDO::PARAM_STR);
         $stmt->bindValue(':chapter', $chapter, PDO::PARAM_STR);
         $stmt->bindValue(':verse', $verse, PDO::PARAM_STR);
