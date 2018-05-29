@@ -38,16 +38,16 @@ session_start();
     <body>
         <form method="POST" action="scriptures.php">
         <label for='book'>Book</label>
-        <input id='book' type='text'>
+        <input id='book' type='text' name='book'>
         <br>
         <label for='chapter'>Chapter</label>
-        <input id='chapter' type='text'>
+        <input id='chapter' type='text' name='chapter'>
         <br>
         <label for='verse'>Verse</label>
-        <input id='verse' type='text'>
+        <input id='verse' type='text' name='verse'>
         <br>
         <label for='content'>Content</label>
-        <textarea id='content'></textarea>
+        <textarea id='content' name='content'></textarea>
         <br>
         <?php
         // var_dump($topics);
