@@ -8,7 +8,6 @@ if (!isset($_SESSION['build']) || $action !== 'getBuild') {
 exit();
 }
 
-$message = $_SESSION['message'];
 $build = $_SESSION['build'];
 $total = 0;
 
@@ -29,6 +28,7 @@ $total = 0;
     <main>
         <h1>My Build</h1>
         <?php
+        // message is defined in the header
         if (isset($message)) {
             echo "<div id='message'><p>$message</p></div>";
         }

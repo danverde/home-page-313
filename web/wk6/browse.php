@@ -11,7 +11,6 @@ if (!isset($item)) {
     exit();
 }
 
-$message = $_SESSION['message'];
 $items = $_SESSION['items'];
 $itemType = $_SESSION['itemType'];
 
@@ -32,6 +31,7 @@ $itemType = $_SESSION['itemType'];
     <main>
         <h1> Browse </h1>
         <?php 
+        // message is defined in the header
         if (isset($message)) {
             echo "<div id='message'><p>$message</p></div>";
         }

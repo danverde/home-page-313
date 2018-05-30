@@ -153,36 +153,43 @@ function clearBuild($db) {
 }
 
 function removeFromBuild($db) {
-    $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
-    $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
-    $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
-    $itemTypeIdSelector = strtolower($itemType)."_id";
-    $userId = $_SESSION['userId'];
-
-    var_dump($_POST);
-    
-    var_dump($itemTypeIdSelector);
-    var_dump($userId);
-
     try {
-        // $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=".$userId);
-        $stmt = $db->prepare('UPDATE builds SET :itemType_id = null WHERE user_id=:userId');
-        $stmt->bindValue(':itemType_id', $itemTypeIdSelector, PDO::PARAM_STR);
+        $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
+        $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
+        $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
+    
+        $itemTypeIdSelector = formatColId($itemType);
+
+        if ($itemTypeIdSelector === NULL) {
+            throw new Exception("Invalid Column Id: $itemTypeIdSelector");
+        }
+
+        $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=:uerId");
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
         getBuild();
-
+        
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
-        var_dump($err);
-        exit();
         $_SESSION['build'] = "Error"; // TODO this should be better...
-        header("location: ./build.php");
+        getBuild();
+        // header("location: ./build.php");
     }
 
     
+}
+
+
+function formatColId($itemType) {
+    $id = strtolower($itemType)."_id";
+    $validIds = array('motherboard_id', 'cpu_id', 'gpu_id', 'fan_id', 'memory_id', 'storage_id', 'tower_id');
+    if (in_array($validIds)) {
+        return $id;
+    } else {
+        return NULL;
+    }
 }
 
 /* chose action */

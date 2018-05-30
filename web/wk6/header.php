@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $message = $_SESSION['message'];
+$_SESSION['message'] = null;
 
 if(!isset($_SESSION['userId'])) {
     header("location: ./controller.php");
