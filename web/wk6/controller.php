@@ -111,7 +111,7 @@ function addToBuild($db) {
     try {
         $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STRING);
         $stmt->execute();
         $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
