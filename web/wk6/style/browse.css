@@ -20,7 +20,7 @@
     box-sizing: border-box;
     clear: both;
     display: flex;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
     margin-bottom: 0;
     /* align-items: baseline; */
 }

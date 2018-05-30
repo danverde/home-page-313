@@ -56,11 +56,11 @@ function browse($db) {
         
         // TODO there's got to be a better way to do this...
         // ERROR will break
-        $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
-        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-        $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
-        $stmt->execute();
-        $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
+        // $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        // $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
+        // $stmt->execute();
+        // $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $_SESSION['buildItem'] = $buildItem;
     } catch(PDOException $err) {
