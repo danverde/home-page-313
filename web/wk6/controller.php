@@ -44,7 +44,7 @@ function getItemTypes($db) {
 function browse($db) {
     $itemType = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
     if (empty($itemType)) {
-        $item = 'motherboard';
+        $itemType = 'motherboard';
     }
     $itemType = strtolower($itemType);
     $_SESSION['itemType'] = $itemType;
