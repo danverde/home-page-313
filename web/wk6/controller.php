@@ -81,7 +81,7 @@ function getBuild($db) {
     }
 
     try {
-        $stmt = $db->prepare('SELECT i.item_id i.name, i.price, it.item_type_name
+        $stmt = $db->prepare('SELECT i.item_id, i.name, i.price, it.item_type_name
         FROM items AS i
         INNER JOIN builds AS bu ON (bu.user_id=:userId)
         INNER JOIN item_type AS it USING(item_type_id)
