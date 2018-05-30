@@ -18,6 +18,8 @@ if (!isset($_SESSION['userId'])) {
 }
 
 /* Start functions */
+
+// TODO finish me
 function getItemTypes($db) {
     $_SESSION['itemTypes'] = null;
     try {
@@ -95,8 +97,9 @@ function getBuild($db) {
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $_SESSION['build'] = $rows;
-
+        
     } catch(PDOException $err) {
+        $_SESSION['build'] = "Error getting build";
         $_SESSION['message'] = "Unable to get items: $err";
     }
 
@@ -105,8 +108,6 @@ function getBuild($db) {
 }
 
 function addToBuild($db) {
-
-
     $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
     $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
     $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
