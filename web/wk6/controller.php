@@ -216,6 +216,7 @@ function removeFromBuild($db) {
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
         getBuild($db);
+        $_SESSION['message'] = "$itemName Successfully removed from build";
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
