@@ -185,7 +185,7 @@ function removeFromBuild($db) {
 function formatColId($itemType) {
     $id = strtolower($itemType)."_id";
     $validIds = array('motherboard_id', 'cpu_id', 'gpu_id', 'fan_id', 'memory_id', 'storage_id', 'tower_id');
-    if (in_array($validIds)) {
+    if (in_array($validIds, $id)) {
         return $id;
     } else {
         return NULL;
