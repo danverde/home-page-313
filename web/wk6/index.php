@@ -47,7 +47,7 @@ $itemTypes = $_SESSION['itemTypes'];
                     }
                 }
 
-                echo "<a class='button button-lg' href='./controller.php?action=browse&item=$item'>".$itemTitle."</a>";  
+                echo "<a class='button button-lg' href='./controller.php?action=browse&itemType=$item'>".$itemTitle."</a>";  
             }?>
         </div>
     </main>

@@ -43,7 +43,7 @@ function getItemTypes($db) {
 
 function browse($db) {
     $userId = $_SESSION['userId'];
-    $itemType = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
+    $itemType = filter_input(INPUT_GET, 'itemType', FILTER_SANITIZE_STRING);
     if (empty($itemType)) {
         $itemType = 'motherboard';
     }
@@ -226,8 +226,9 @@ function removeFromBuild($db) {
         if ($caller === "build") {
             getBuild($db);
         } else {
-            header("location: ./browse.php?item=$itemType");
-            exit();
+            browse($db);
+            // header("location: ./browse.php?item=$itemType");
+            // exit();
         }
     }
 
