@@ -110,6 +110,9 @@ function addToBuild($db) {
     $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
     $itemtype = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
     $itemTypeIdSelector = $itemType."_id";
+
+    var_dump($itemTypeIdSelector);
+    var_dump($itemType);
     /* check to see if the item needs to be removed first */
 
     try {
