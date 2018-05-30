@@ -159,6 +159,7 @@ function removeFromBuild($db) {
         $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
     
         $itemTypeIdSelector = formatColId($itemType);
+        var_dump($itemTypeIdSelector);
 
         if ($itemTypeIdSelector === NULL) {
             throw new Exception("Invalid Column Id: $itemTypeIdSelector");

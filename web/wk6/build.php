@@ -3,7 +3,7 @@ session_start();
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
-if (!isset($_SESSION['build']) || $action !== 'getBuild') {
+if (!isset($_SESSION['build'])) {
     header("location: ./controller.php?action=getBuild");
 exit();
 }
