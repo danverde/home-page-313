@@ -44,7 +44,7 @@ $itemType = $_SESSION['itemType'];
                 
                 $action = 'addToBuild';
                 $warning = '';
-                if ($item['buildItem'] === true) {
+                if ($_SESSION['buildItemId'] == $item['item_id']) {
                     $action = 'removeFromBuild';
                     $warning = 'btn-warning';
                 }

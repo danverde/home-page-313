@@ -70,9 +70,17 @@ function browse($db) {
         // TODO 
         // grab items from build with corresponding itemType
         // add 'buildItem' property to item which is included in the current users build
+        // TODO explain lack of PDO filtering
+        $stmt = $db->prepare("SELECT item_id
+        FROM items AS i 
+        JOIN builds AS bu ON user_id=:userId
+        AND bu.".$itemTypeIdSelector."=i.item_id");
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_STR);
+        $stmt->execute();
+        $buildItemId = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        $_SESSION['buildItemId'] = $buildItemId;
 
-        $_SESSION['buildItem'] = $buildItem;
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
