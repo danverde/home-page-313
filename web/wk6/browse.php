@@ -8,15 +8,17 @@ if (!isset($item)) {
     exit();
 } else if ($_SESSION['itemType'] !== $item){
     /* Enables user to change item type in the URL */
-    var_dump($_SESSION['itemType']);
-    var_dump($item);
     header("Location: ./controller.php?action=browse&item=$item");
     exit();
 }
 
 $items = $_SESSION['items'];
 $itemType = $_SESSION['itemType'];
+$buildItemId = $_SESSION['buildItemId'];
 
+var_dump($buildItemId);
+var_dump($items);
+die();
 ?>
 
 <!DOCTYPE html>
@@ -45,9 +47,9 @@ $itemType = $_SESSION['itemType'];
                 $itemName = $item['name'];
                 $itemId = $_SESSION['item_id'];
 
-                var_dump($_SESSION['buildItemId']);
+                var_dump($buildItemId);
                 var_dump($item['item_id']);
-
+                
                 $action = 'addToBuild';
                 $warning = '';
                 if ($_SESSION['buildItemId'] == $item['item_id']) {
