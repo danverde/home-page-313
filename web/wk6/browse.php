@@ -31,7 +31,7 @@ $itemType = $_SESSION['itemType'];
     <?php require 'header.php'; ?>
     <main>
         <h1> Browse </h1>
-        <?php if(isset($message) {
+        <?php if(isset($message)) {
             echo "<div style='width:100%;'><p>$message</p></div>";
         }
         ?>
