@@ -92,6 +92,7 @@ h2.section {
 }
 
 .flex-wrapper {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
