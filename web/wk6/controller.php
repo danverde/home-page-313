@@ -95,12 +95,6 @@ function getBuild($db) {
     }
 
     try {
-        $stmt = $db->prepare('SELECT item_type_id FROM item_type;');
-        $stmt->execute();
-        $itemTypes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $_SESSION['itemTypes'] = $itemTypes;
-
         // TODO
         // loop through each item type & get the corresponding build item
         // OR
@@ -122,10 +116,6 @@ function getBuild($db) {
         $stmt->execute();
         $build = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        var_dump($build);
-        var_dump($itemTypes);
-        die();
-
         $_SESSION['build'] = $build;
         
     } catch(PDOException $err) {
