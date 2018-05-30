@@ -99,8 +99,10 @@ function getBuild($db) {
         $_SESSION['build'] = $rows;
         
     } catch(PDOException $err) {
-        $_SESSION['build'] = "Error getting build";
-        $_SESSION['message'] = "Unable to get items: $err";
+        // $_SESSION['build'] = "Error getting build";
+        $_SESSION['message'] = "Unable to get items";
+        var_dump($err);
+        die();
     }
 
     header("location: ./build.php?action=getBuild");
@@ -174,8 +176,8 @@ function removeFromBuild($db) {
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
-        var_dump($err);
-        die();
+        // var_dump($err);
+        // die();
         // TODO this should be better...
         getBuild();
         // header("location: ./build.php");
@@ -187,7 +189,7 @@ function removeFromBuild($db) {
 
 function formatColId($itemType) {
     $id = strtolower($itemType)."_id";
-    $validIds = array('motherboard_id', 'cpu_id', 'gpu_id', 'fan_id', 'memory_id', 'storage_id', 'tower_id');
+    $validIds = array('motherboard_id', 'cpu_id', 'gpu_id', 'fan_id', 'memory_id', 'storage_id', 'tower_id', 'psu_id');
     if (in_array($validIds, $id)) {
         return $id;
     } else {
