@@ -26,8 +26,10 @@ $total = 0;
 <body>
     <?php require 'header.php'; ?>    
     <main>
+    <div class='flex-wrapper space-around'>
         <h1>My Build</h1>
         <a class='button btn-warning' href='./controller.php?action=clearBuild'>Clear Build</a>
+    </div>
         <?php
         // message is defined in the header
         if (isset($message)) {
