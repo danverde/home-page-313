@@ -78,6 +78,17 @@ header nav a {
 }
 
 /*** START TEMPLATES ***/
+#message {
+    padding: 0 15px;
+    background-color: #c6ffc6;
+    order: 1px solid green;
+}
+
+#message.error {
+    background-color: #ffc9c9;
+    border: 1px solid red;
+}
+
 .borderless {
     border: none !important;
 }

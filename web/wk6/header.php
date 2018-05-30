@@ -1,6 +1,10 @@
 <?php 
 session_start();
 $message = $_SESSION['message'];
+if (isset($message)) {
+    $messageType = $_SESSION['messageType'];
+    $message = "<div id='message' class='$messageType'><p>$message</p></div>";
+}
 $_SESSION['message'] = null;
 
 if(!isset($_SESSION['userId'])) {

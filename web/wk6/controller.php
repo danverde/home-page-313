@@ -1,8 +1,6 @@
 <?php
 require './db.php';
 
-// TODO extract ALL redirection to the switch statement.
-
 session_start();
 
 /* get action */
@@ -34,11 +32,12 @@ function getItemTypes($db) {
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $_SESSION['itemTypes'] = $rows;
     } catch (PDOException $err) {
-        $_SESSION['message'] = "Unable to get availible item types: $err";
+        $_SESSION['message'] = "Unable to get availible item types";
+        $_SESSION['messageType'] = 'error';
+    } finally {
+        header("location: ./index.php");
+        exit();
     }
-
-    header("location: ./index.php");
-    exit();
 }
 
 function browse($db) {
@@ -79,11 +78,12 @@ function browse($db) {
         $_SESSION['buildItemId'] = $buildItemId['item_id'];
 
     } catch(PDOException $err) {
-        $_SESSION['message'] = "Unable to get items: $err";
+        $_SESSION['message'] = "Unable to get items";
+        $_SESSION['messageType'] = 'error';
+    } finally {
+        header("location: ./browse.php?itemType=$itemType");
+        exit();
     }
-
-    header("location: ./browse.php?itemType=$itemType");
-    exit();
 }
 
 function getBuild($db) {
@@ -114,8 +114,9 @@ function getBuild($db) {
         
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items";
-        var_dump($err);
-        die();
+        $_SESSION['messageType'] = 'error';
+        // var_dump($err); //TESTING
+        // die(); /TESTING
     }
 
     header("location: ./build.php?action=getBuild");
@@ -144,6 +145,7 @@ function addToBuild($db) {
 
     } catch(Exception $err) {
         $_SESSION['message'] = "Unable to add $itemName To build";
+        $_SESSION['messageType'] = 'error';
         var_dump($err); // TESTING
         die(); //TESTING
     } finally {
@@ -174,6 +176,7 @@ function clearBuild($db) {
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
+        $_SESSION['messageType'] = 'error';
         // var_dump($err); // TESTING
         // die(); // TESTING
         getBuild($db);
@@ -211,16 +214,14 @@ function removeFromBuild($db) {
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
+        $_SESSION['messageType'] = 'error';
         // var_dump($err); // TESTING
         // die(); // TESTING
     } finally {
-        // TODO is finally the fight spot for this?
         if ($caller === "build") {
             getBuild($db);
         } else {
             browse($db);
-            // header("location: ./browse.php?itemType=$itemType");
-            // exit();
         }
     }
 
