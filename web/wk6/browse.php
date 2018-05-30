@@ -31,8 +31,9 @@ $itemType = $_SESSION['itemType'];
     <?php require 'header.php'; ?>
     <main>
         <h1> Browse </h1>
-        <?php if (isset($message)) {
-            echo "<div style='width:100%;'><p>$message</p></div>";
+        <?php 
+        if (isset($message)) {
+            echo "<div id='message'><p>$message</p></div>";
         }
         ?>
         <div id='itemList' class='flex-wrapper space-around'>

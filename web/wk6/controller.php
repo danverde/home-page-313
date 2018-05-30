@@ -79,7 +79,7 @@ function getBuild($db) {
     }
 
     try {
-        $stmt = $db->prepare('SELECT i.name, i.price, it.item_type_name
+        $stmt = $db->prepare('SELECT i.item_id i.name, i.price, it.item_type_name
         FROM items AS i
         INNER JOIN builds AS bu ON (bu.user_id=:userId)
         INNER JOIN item_type AS it USING(item_type_id)
@@ -121,6 +121,7 @@ function addToBuild($db) {
         $stmt->execute();
         $buildItem = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // TODO  I don't think this is correct...
         if ($buildItems != false) {
             $_SESSION['message'] = "Must sremove existing $itemType from build first";
             header("location: ./browse.php?item=$itemType");
@@ -128,7 +129,8 @@ function addToBuild($db) {
             return;    
         }
 
-        $_SESSION['message'] = "$itemName successfully added to build";
+        // $_SESSION['message'] = "$itemName successfully added to build";
+        $_SESSION['message'] = "Successfully queried the DB for that Item";
 
 
     } catch(Exception $err) {
