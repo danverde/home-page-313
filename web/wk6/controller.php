@@ -111,17 +111,24 @@ function addToBuild($db) {
     $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
     $itemTypeIdSelector = $itemType."_id";
 
+    
     /* check to see if the item needs to be removed first */
-
     try {
-        $stmt = $db->prepare("SELECT ".$itemTypeIdSelector."  FROM builds WHERE user_id=:userId");
+        $stmt = $db->prepare('SELECT :itemId FROM builds WHERE user_id=:userId');
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-        // $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
+        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
         $stmt->execute();
         $buildItem = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        var_dump($buildItem);
-        die();
+        if ($buildItems != false) {
+            $_SESSION['message'] = "Must sremove existing $itemType from build first";
+            header("location: ./browse.php?item=$itemType");
+            exit();
+            return;    
+        }
+
+
+
 
     } catch(Exception $err) {
         var_dump($err);
