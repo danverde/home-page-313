@@ -118,7 +118,8 @@ function addToBuild($db) {
         var_dump($buildItem);
         die();
     } catch(Exception $err) {
-
+        var_dump($err);
+        die();
     }
 }
 
