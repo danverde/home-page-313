@@ -112,9 +112,9 @@ function addToBuild($db) {
     /* check to see if the item needs to be removed first */
 
     try {
-        $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userId');
+        $stmt = $db->prepare("SELECT ".$itemTypeIdSelector."  FROM builds WHERE user_id=:userId");
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
+        // $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
         $stmt->execute();
         $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
