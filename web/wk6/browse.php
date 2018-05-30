@@ -11,7 +11,6 @@ if (!isset($item)) {
     exit();
 }
 
-//TODO enable me
 $items = $_SESSION['items'];
 
 ?>

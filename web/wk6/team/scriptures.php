@@ -47,7 +47,7 @@ session_start();
 
 
     try {
-        $stmt = $db->prepare('SELECT name, book, chapter, verse, content FROM scriptures');
+        $stmt = $db->prepare('SELECT name, book, chapter, verse, content FROM scriptures AS sc JOIN scripture_topic AS st ON sc.scripture_id=st.scripture_id');
         $stmt->execute();
         $scriptures = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
