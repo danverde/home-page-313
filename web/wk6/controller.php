@@ -168,6 +168,7 @@ function removeFromBuild($db, $itemType) {
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
         die();
+        return;
         
         // getBuild();
     } catch(Exception $err) {
