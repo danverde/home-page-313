@@ -144,8 +144,8 @@ function addToBuild($db) {
 
     } catch(Exception $err) {
         $_SESSION['message'] = "Unable to add $itemName To build";
-        // var_dump($err); // TESTING
-        // die(); //TESTING
+        var_dump($err); // TESTING
+        die(); //TESTING
     } finally {
         browse($db);
     }
