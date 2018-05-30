@@ -44,6 +44,7 @@ $items = $_SESSION['items'];
                 <div>
                     <form method='POST' action='controller.php'>
                         <input type='hidden' name='action' value='addToBuild'>
+                        <input type='hidden' name='itemType' value='$item'>
                         <input type='hidden' name='itemId' value='$itemId'>
                         <input type='submit' class='button' value='Add to Build'>
                     </form>

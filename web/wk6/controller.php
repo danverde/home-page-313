@@ -104,15 +104,40 @@ function getBuild($db) {
 }
 
 function addToBuild($db) {
+    $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
+    $itemtype = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
 
+    /* check to see if the item needs to be removed first */
+    try {
+        $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
+        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
+        $stmt->execute();
+        $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        var_dump($buildItem);
+        die();
+    } catch(Exception $err) {
+
+    }
 }
 
 function clearBuild($db) {
 
+    try {
+
+    } catch(Exception $err) {
+
+    }
 }
 
-function removeFromBuild($db) {
+function removeFromBuild($db, $itemType) {
 
+    try {
+
+    } catch(Exception $err) {
+
+    }
 }
 
 /* chose action */
