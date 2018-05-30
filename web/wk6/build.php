@@ -51,7 +51,7 @@ $total = 0;
                     $id = $item['item_id'];
                     $total += $itemPrice;
 
-                    if ($itemType === 'cpu' || $component === 'gpu' || $itemType === 'psu') {
+                    if ($itemType === 'cpu' || $itemType === 'gpu' || $itemType === 'psu') {
                         $itemType = strtoupper($itemType);
                     } else {
                         $itemType = ucfirst($itemType);
