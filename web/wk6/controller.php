@@ -134,6 +134,9 @@ function addToBuild($db) {
         var_dump($err);
         die();
     }
+
+    header("location: ./browse.php?item=$itemType");
+    exit();
 }
 
 function clearBuild($db) {
