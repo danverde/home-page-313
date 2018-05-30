@@ -156,7 +156,7 @@ function removeFromBuild($db) {
     $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
     $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
     $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
-    $itemTypeIdSelector = $itemType."_id";
+    $itemTypeIdSelector = strtolower($itemType)."_id";
 
     var_dump($_POST);
 
