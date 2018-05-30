@@ -84,7 +84,6 @@ function browse($db) {
         $buildItemId = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $_SESSION['buildItemId'] = $buildItemId;
-        exit();
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
     }

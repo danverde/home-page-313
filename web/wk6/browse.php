@@ -16,9 +16,6 @@ $items = $_SESSION['items'];
 $itemType = $_SESSION['itemType'];
 $buildItemId = $_SESSION['buildItemId'];
 
-var_dump($buildItemId);
-var_dump($items);
-die();
 ?>
 
 <!DOCTYPE html>
