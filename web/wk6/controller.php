@@ -165,6 +165,9 @@ function removeFromBuild($db, $itemType) {
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
         $stmt->execute();
+        $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        die();
         
         getBuild();
     } catch(Exception $err) {
