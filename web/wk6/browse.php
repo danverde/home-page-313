@@ -11,8 +11,8 @@ if (!isset($item)) {
     exit();
 }
 
-//TODO enable me
 $items = $_SESSION['items'];
+$itemType = $_SESSION['itemType'];
 
 ?>
 
@@ -44,7 +44,7 @@ $items = $_SESSION['items'];
                 <div>
                     <form method='POST' action='controller.php'>
                         <input type='hidden' name='action' value='addToBuild'>
-                        <input type='hidden' name='itemType' value='$item'>
+                        <input type='hidden' name='itemType' value='$itemType'>
                         <input type='hidden' name='itemId' value='$itemId'>
                         <input type='submit' class='button' value='Add to Build'>
                     </form>
