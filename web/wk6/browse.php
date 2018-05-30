@@ -45,7 +45,7 @@ $buildItemId = $_SESSION['buildItemId'];
                 $itemId = $item['item_id'];
 
                 var_dump($buildItemId);
-                var_dump($item);
+                var_dump($itemId);
                 
                 $action = 'addToBuild';
                 $warning = '';
