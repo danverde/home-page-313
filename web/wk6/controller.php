@@ -161,7 +161,7 @@ function removeFromBuild($db) {
     var_dump($_POST);
 
     try {
-        $stmt = $db->prepare('UPDATE builds SET :itemId=NULL WHERE user_id=:userId');
+        $stmt = $db->prepare('UPDATE builds SET :itemId = NULL WHERE user_id=:userId');
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
         $stmt->execute();
