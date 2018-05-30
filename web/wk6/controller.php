@@ -75,6 +75,7 @@ function browse($db) {
 
 function getBuild($db) {
     $userId = $_SESSION['userId'];
+    
     /* UserId must not be empty */
     if (!isset($userId)) {
         return;
@@ -99,7 +100,6 @@ function getBuild($db) {
         $_SESSION['build'] = $rows;
         
     } catch(PDOException $err) {
-        // $_SESSION['build'] = "Error getting build";
         $_SESSION['message'] = "Unable to get items";
         var_dump($err);
         die();
@@ -146,15 +146,42 @@ function addToBuild($db) {
 }
 
 function clearBuild($db) {
+    $userId = $_SESSION['userId'];
+    
+    /* UserId must not be empty */
+    if (!isset($userId)) {
+        return;
+    }
 
     try {
-
+        $stmt = $db->prepare("UPDATE builds 
+        SET (motherboard_id, cpu_id, gpu_id, fan_id, memory_id, storage_id, tower_id, psu_id)= (null, null, null, null, null, null, null, null)
+        WHERE user_id=:userId");
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        getBuild($db);
+        
     } catch(Exception $err) {
-
+        $_SESSION['message'] = "Something went wrong while removing that item";
+        // var_dump($err); // TESTING
+        // die(); // TESTING
+        getBuild($db);
     }
 }
 
+/*******************************************************
+ * Removes a single item from the current user's build 
+ *******************************************************/
 function removeFromBuild($db) {
+    $userId = $_SESSION['userId'];
+    
+    /* UserId must not be empty */
+    if (!isset($userId)) {
+        return;
+    }
+
     try {
         $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
         $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
@@ -166,8 +193,9 @@ function removeFromBuild($db) {
             throw new Exception("Invalid Column Id: $itemTypeIdSelector");
         }
 
+        // TODO explain lack of PDO bindValue
         $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=:userId");
-        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -175,15 +203,19 @@ function removeFromBuild($db) {
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
-        var_dump($err); // TESTING
-        die(); // TESTING
+        // var_dump($err); // TESTING
+        // die(); // TESTING
         getBuild($db);
     }
 
     
 }
 
-
+/************************************************
+ *  Takes an itemType & converts it to the 
+ * corresponding column in the builds table.
+ * Returns NULL if unable to do so correctly
+ ***********************************************/
 function formatColId($itemType) {
     $id = strtolower($itemType)."_id";
     $validIds = array('motherboard_id', 'cpu_id', 'gpu_id', 'fan_id', 'memory_id', 'storage_id', 'tower_id', 'psu_id');
@@ -194,7 +226,10 @@ function formatColId($itemType) {
     }
 }
 
-/* chose action */
+/****************************************
+ * Chose which function to call based
+ * off the action property
+ **************************************/
 switch ($action) {
     case 'getItemTypes':
     getItemTypes($db);
