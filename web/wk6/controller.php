@@ -85,7 +85,7 @@ function browse($db) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
 
-    header("location: ./browse.php?item=$item");
+    header("location: ./browse.php?item=$itemType");
     exit();
 }
 
