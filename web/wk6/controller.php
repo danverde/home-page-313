@@ -139,7 +139,7 @@ function addToBuild($db) {
 
         // TODO  I don't think this is correct...
         if ($buildItems != false) {
-            $_SESSION['message'] = "Must sremove existing $itemType from build first";
+            $_SESSION['message'] = "Must remove existing $itemType from build first";
             header("location: ./browse.php?item=$itemType");
             exit();
             return;    
@@ -192,7 +192,7 @@ function clearBuild($db) {
  *******************************************************/
 function removeFromBuild($db) {
     $userId = $_SESSION['userId'];
-    
+    $caller = filter_input(INPUT_POST, 'caller', FILTER_SANITIZE_STRING);
     /* UserId must not be empty */
     if (!isset($userId)) {
         return;
@@ -209,20 +209,23 @@ function removeFromBuild($db) {
             throw new Exception("Invalid Column Id: $itemTypeIdSelector");
         }
 
-        // TODO explain lack of PDO bindValue
+        /* Column must be dynamically generated, so PDO bind cannot be used. */
         $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=:userId");
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
         $_SESSION['message'] = "$itemName Successfully removed from build";
-        getBuild($db);
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
         // var_dump($err); // TESTING
         // die(); // TESTING
-        getBuild($db);
+    } finally {
+        // TODO is finally the fight spot for this?
+        if ($caller === "build") {
+            getBuild($db);
+        }
     }
 
     

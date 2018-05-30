@@ -41,7 +41,7 @@ $total = 0;
                 <tr>
                     <th>Component Type</th>
                     <th>Name</th>
-                    <th>Quantity</th>
+                    <th></th>
                     <th>Price</th>
                 </tr>
             </thead>
@@ -66,6 +66,7 @@ $total = 0;
                         <td>
                             <form method='POST' action='controller.php'>
                                 <input type='hidden' name='action' value='removeFromBuild'>
+                                <input type='hidden' name='caller' value='build'>
                                 <input type='hidden' name='itemType' value='$itemType'>
                                 <input type='hidden' name='itemName' value='$itemName'>
                                 <input type='hidden' name='itemId' value='$id'>
