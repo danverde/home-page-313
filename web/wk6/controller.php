@@ -124,6 +124,7 @@ function getBuild($db) {
         
         var_dump($build);
         var_dump($itemTypes);
+        die();
 
         $_SESSION['build'] = $build;
         
