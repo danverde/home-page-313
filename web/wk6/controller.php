@@ -42,18 +42,17 @@ function browse($db) {
     $_SESSION['itemType'] = $item;
 
     try {
-        /* get rows */
+        /* get all items of a specific type */
         $stmt = $db->prepare('SELECT name, description, price, image_location FROM items AS i 
-        JOIN item_type AS it
-        ON i.item_type_id = it.item_type_id
+        JOIN item_type AS it USING(item_type_id)
+        LEFT JOIN builds AS bu ON 
         WHERE it.item_type_name = :itemName');
         $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        /* get build */
-        var_dump($_SESSION['userId']);
-        die();
+        // var_dump($_SESSION['userId']);
+        // die();
         $idToGrab = $item."_id";
 
         // TODO there's got to be a better way to do this...
@@ -61,9 +60,9 @@ function browse($db) {
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
         $stmt->execute();
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
+        $_SESSION['buildItem'] = $buildItem;
         $_SESSION['items'] = $rows;
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
@@ -84,7 +83,7 @@ function getBuild($db) {
         $stmt = $db->prepare('SELECT i.name, i.price, it.item_type_name
         FROM items AS i
         INNER JOIN builds AS bu ON (bu.user_id=:userId)
-        INNER JOIN item_type AS it ON (it.item_type_id = i.item_type_id)
+        INNER JOIN item_type AS it USING(item_type_id)
         WHERE bu.motherboard_id = i.item_id
         OR bu.cpu_id = i.item_id
         OR bu.gpu_id = i.item_id
