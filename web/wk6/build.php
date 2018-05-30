@@ -1,8 +1,9 @@
 <?php
 session_start();
 
+$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
-if (!isset($_SESSION['build'])) {
+if (!isset($_SESSION['build']) || $action !== 'getBuild') {
     header("location: ./controller.php?action=getBuild");
 exit();
 }

@@ -103,7 +103,7 @@ function getBuild($db) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
 
-    header("location: ./build.php");
+    header("location: ./build.php?action=getBuild");
     exit();
 }
 
@@ -165,8 +165,8 @@ function removeFromBuild($db) {
 
     try {
         $stmt = $db->prepare('UPDATE builds SET :itemType_id = NULL WHERE user_id=:userId');
-        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->bindValue(':itemType_id', $itemTypeIdSelector, PDO::PARAM_STR);
+        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
