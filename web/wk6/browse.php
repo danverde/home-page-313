@@ -76,6 +76,7 @@ $buildItemId = $_SESSION['buildItemId'];
                         </form>
                 </div>
                 </div>";
+                }
             }
             ?>
         </div>

@@ -67,14 +67,7 @@ function browse($db) {
             throw new Exception("Invalid Column Id: $itemTypeIdSelector");
         }
         
-        // TODO 
-        // grab items from build with corresponding itemType
-        // add 'buildItemId' property to item which is included in the current users build
-        // TODO explain lack of PDO filtering
-
-        var_dump($itemTypeIdSelector);
-        var_dump($userId);
-
+        /* PDO inserts aren't used for itemTypeIdSelector because the column must be set dynamically */
         $stmt = $db->prepare("SELECT item_id
         FROM items AS i 
         JOIN builds AS bu ON user_id=:userId
@@ -84,6 +77,7 @@ function browse($db) {
         $buildItemId = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $_SESSION['buildItemId'] = $buildItemId['item_id'];
+
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
