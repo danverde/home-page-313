@@ -225,6 +225,9 @@ function removeFromBuild($db) {
         // TODO is finally the fight spot for this?
         if ($caller === "build") {
             getBuild($db);
+        } else {
+            header("location: ./browse.php?item=$itemType");
+            exit();
         }
     }
 
@@ -274,9 +277,11 @@ switch ($action) {
     case 'removeFromBuild':
     removeFromBuild($db);
     break;
-}
-/* Go to home page by default */
-header("location: ./index.php");
-exit();
 
+    /* Go to home page by default */
+    default:
+    header("location: ./index.php");
+    exit();
+    break;
+}
 ?>

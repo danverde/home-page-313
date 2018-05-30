@@ -53,7 +53,6 @@ $buildItemId = $_SESSION['buildItemId'];
                     <div>
                     <form method='POST' action='controller.php'>
                         <input type='hidden' name='action' value='removeFromBuild'>
-                        <input type='hidden' name='caller' value='browse'>
                         <input type='hidden' name='itemName' value='$itemName'>
                         <input type='hidden' name='itemType' value='$itemType'>
                         <input type='hidden' name='itemId' value='$itemId'>
