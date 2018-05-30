@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-$item = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
+$urlItemType = filter_input(INPUT_GET, 'itemType', FILTER_SANITIZE_STRING);
 
-if (!isset($item)) {
+if (!isset($urlItemType)) {
     header("Location: ./controller.php?action=browse");
     exit();
-} else if ($_SESSION['itemType'] !== $item){
+} else if ($_SESSION['itemType'] !== $urlItemType){
     /* Enables user to change item type in the URL */
-    header("Location: ./controller.php?action=browse&item=$item");
+    header("Location: ./controller.php?action=browse&item=$urlItemType");
     exit();
 }
 
