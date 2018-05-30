@@ -50,6 +50,8 @@ $buildItemId = $_SESSION['buildItemId'];
                 $action = 'addToBuild';
                 $warning = '';
                 if ($buildItemId === $itemId) {
+                    print('same');
+                    die();
                     $action = 'removeFromBuild';
                     $warning = 'btn-warning';
                 }
