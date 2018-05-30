@@ -1,6 +1,8 @@
 <?php
 require './db.php';
 
+// TODO extract ALL redirection to the switch statement.
+
 session_start();
 
 /* get action */
@@ -19,7 +21,11 @@ if (!isset($_SESSION['userId'])) {
 
 /* Start functions */
 
-// TODO finish me
+/***********************************
+ * Gets each itemType name.
+ * Often used to populate the browse
+ * list
+ **********************************/
 function getItemTypes($db) {
     $_SESSION['itemTypes'] = null;
     try {
@@ -36,33 +42,35 @@ function getItemTypes($db) {
 }
 
 function browse($db) {
-    $item = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
-    if (empty($item)) {
+    $itemType = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
+    if (empty($itemType)) {
         $item = 'motherboard';
     }
-    $item = strtolower($item);
-    $_SESSION['itemType'] = $item;
+    $itemType = strtolower($itemType);
+    $_SESSION['itemType'] = $itemType;
 
     try {
         /* get all items of a specific type */
         $stmt = $db->prepare('SELECT item_id, name, description, price, image_location FROM items AS i 
         JOIN item_type AS it USING(item_type_id)
         WHERE it.item_type_name = :itemName');
-        $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
+        $stmt->bindValue(':itemName', $itemType, PDO::PARAM_STR);
         $stmt->execute();
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        $_SESSION['items'] = $rows;
+        // $_SESSION['items'] = $items;
         
-        $idToGrab = $item."_id";
+
+        $itemTypeIdSelector = formatColId($itemType);
+
+        if ($itemTypeIdSelector === NULL) {
+            throw new Exception("Invalid Column Id: $itemTypeIdSelector");
+        }
         
-        // TODO there's got to be a better way to do this...
-        // ERROR will break
-        // $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
-        // $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-        // $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
-        // $stmt->execute();
-        // $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // TODO 
+        // grab items from build with corresponding itemType
+        // add 'buildItem' property to item which is included in the current users build
+
 
         $_SESSION['buildItem'] = $buildItem;
     } catch(PDOException $err) {
@@ -145,6 +153,9 @@ function addToBuild($db) {
     exit();
 }
 
+/*************************************************
+ * Removes all items rom the current user's build
+ *************************************************/
 function clearBuild($db) {
     $userId = $_SESSION['userId'];
     
