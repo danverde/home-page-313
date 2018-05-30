@@ -34,6 +34,7 @@ $items = $_SESSION['items'];
             <?php 
             foreach ($items as $item) {
                 $name = $item['name'];
+                $itemId = $_SESSION['item_id'];
                 
                 echo "<div class='item-container' class='flex-wrapper space-around'>
                 <img src='".$item['image_location']."'>
@@ -43,6 +44,7 @@ $items = $_SESSION['items'];
                 <div>
                     <form method='POST' action='controller.php'>
                         <input type='hidden' name='action' value='addToBuild'>
+                        <input type='hidden' name='itemId' value='$itemId'>
                         <input type='submit' class='button' value='Add to Build'>
                     </form>
                 </div>

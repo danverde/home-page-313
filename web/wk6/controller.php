@@ -43,7 +43,7 @@ function browse($db) {
 
     try {
         /* get all items of a specific type */
-        $stmt = $db->prepare('SELECT name, description, price, image_location FROM items AS i 
+        $stmt = $db->prepare('SELECT item_id, name, description, price, image_location FROM items AS i 
         JOIN item_type AS it USING(item_type_id)
         WHERE it.item_type_name = :itemName');
         $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
