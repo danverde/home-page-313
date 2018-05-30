@@ -45,16 +45,15 @@ function browse($db) {
         /* get all items of a specific type */
         $stmt = $db->prepare('SELECT name, description, price, image_location FROM items AS i 
         JOIN item_type AS it USING(item_type_id)
-        LEFT JOIN builds AS bu ON 
         WHERE it.item_type_name = :itemName');
         $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // var_dump($_SESSION['userId']);
-        // die();
+        
+        $_SESSION['items'] = $rows;
+        
         $idToGrab = $item."_id";
-
+        
         // TODO there's got to be a better way to do this...
         $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
@@ -63,7 +62,6 @@ function browse($db) {
         $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $_SESSION['buildItem'] = $buildItem;
-        $_SESSION['items'] = $rows;
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
