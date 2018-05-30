@@ -139,3 +139,7 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'Corsair RM750x', '750 Watt 80 Plus Gold ATX Modular Power Supply', 119, './images/rm750x.jpg' FROM item_type WHERE item_type_name = 'psu');
+
+
+SELECT item_id FROM items i 
+JOIN builds bu ON user_id=1 AND bu.motherboard_id=i.item_id;

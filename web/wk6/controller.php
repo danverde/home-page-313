@@ -42,6 +42,7 @@ function getItemTypes($db) {
 }
 
 function browse($db) {
+    $userId = $_SESSION['userId'];
     $itemType = filter_input(INPUT_GET, 'item', FILTER_SANITIZE_STRING);
     if (empty($itemType)) {
         $itemType = 'motherboard';
