@@ -137,7 +137,7 @@ function addToBuild($db) {
 
         $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector."=:itemId WHERE user_id=:userId");
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
-        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $itemId, PDO::PARAM_INT);
         $stmt->execute();
 
         $_SESSION['message'] = "Successfully added $itemName To build";
