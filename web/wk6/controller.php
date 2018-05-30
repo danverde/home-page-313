@@ -207,6 +207,9 @@ switch ($action) {
     break;
 
     case 'removeFromBuild':
+    print('hi');
+    die();
+    return;
     removeFromBuild($db);
     break;
 }
