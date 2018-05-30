@@ -166,7 +166,7 @@ function removeFromBuild($db) {
             throw new Exception("Invalid Column Id: $itemTypeIdSelector");
         }
 
-        $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=:uerId");
+        $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=:userId");
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -175,10 +175,9 @@ function removeFromBuild($db) {
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
-        var_dump($err);
-        die();
+        var_dump($err); // TESTING
+        die(); // TESTING
         getBuild($db);
-        // header("location: ./build.php");
     }
 
     
