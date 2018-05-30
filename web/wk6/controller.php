@@ -18,6 +18,8 @@ if (!isset($_SESSION['userId'])) {
 }
 
 /* Start functions */
+
+// TODO finish me
 function getItemTypes($db) {
     $_SESSION['itemTypes'] = null;
     try {
@@ -42,29 +44,27 @@ function browse($db) {
     $_SESSION['itemType'] = $item;
 
     try {
-        /* get rows */
-        $stmt = $db->prepare('SELECT name, description, price, image_location FROM items AS i 
-        JOIN item_type AS it
-        ON i.item_type_id = it.item_type_id
+        /* get all items of a specific type */
+        $stmt = $db->prepare('SELECT item_id, name, description, price, image_location FROM items AS i 
+        JOIN item_type AS it USING(item_type_id)
         WHERE it.item_type_name = :itemName');
         $stmt->bindValue(':itemName', $item, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        /* get build */
-        var_dump($_SESSION['userId']);
-        die();
-        $idToGrab = $item."_id";
-
-        // TODO there's got to be a better way to do this...
-        $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
-        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-        $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
+        
         $_SESSION['items'] = $rows;
+        
+        $idToGrab = $item."_id";
+        
+        // TODO there's got to be a better way to do this...
+        // ERROR will break
+        // $stmt = $db->prepare('SELECT :itemId  FROM builds WHERE user_id=:userID');
+        // $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        // $stmt->bindValue(':itemId', $idToGrab, PDO::PARAM_INT);
+        // $stmt->execute();
+        // $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $_SESSION['buildItem'] = $buildItem;
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
@@ -81,10 +81,10 @@ function getBuild($db) {
     }
 
     try {
-        $stmt = $db->prepare('SELECT i.name, i.price, it.item_type_name
+        $stmt = $db->prepare('SELECT i.item_id, i.name, i.price, it.item_type_name
         FROM items AS i
         INNER JOIN builds AS bu ON (bu.user_id=:userId)
-        INNER JOIN item_type AS it ON (it.item_type_id = i.item_type_id)
+        INNER JOIN item_type AS it USING(item_type_id)
         WHERE bu.motherboard_id = i.item_id
         OR bu.cpu_id = i.item_id
         OR bu.gpu_id = i.item_id
@@ -97,13 +97,87 @@ function getBuild($db) {
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $_SESSION['build'] = $rows;
-
+        
     } catch(PDOException $err) {
+        $_SESSION['build'] = "Error getting build";
         $_SESSION['message'] = "Unable to get items: $err";
     }
 
     header("location: ./build.php");
     exit();
+}
+
+function addToBuild($db) {
+    $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
+    $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
+    $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
+    $itemTypeIdSelector = $itemType."_id";
+
+    
+    /* check to see if the item needs to be removed first */
+    try {
+        $stmt = $db->prepare('SELECT :itemId FROM builds WHERE user_id=:userId');
+        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
+        $stmt->execute();
+        $buildItem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // TODO  I don't think this is correct...
+        if ($buildItems != false) {
+            $_SESSION['message'] = "Must sremove existing $itemType from build first";
+            header("location: ./browse.php?item=$itemType");
+            exit();
+            return;    
+        }
+
+        // $_SESSION['message'] = "$itemName successfully added to build";
+        $_SESSION['message'] = "Successfully queried the DB for that Item";
+
+
+    } catch(Exception $err) {
+        var_dump($err);
+        die();
+    }
+
+    header("location: ./browse.php?item=$itemType");
+    exit();
+}
+
+function clearBuild($db) {
+
+    try {
+
+    } catch(Exception $err) {
+
+    }
+}
+
+function removeFromBuild($db) {
+    $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
+    $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
+    $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
+    $itemTypeIdSelector = $itemType."_id";
+
+    var_dump($_POST);
+
+    try {
+        $stmt = $db->prepare('UPDATE builds SET :itemId = NULL WHERE user_id=:userId');
+        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
+        $stmt->execute();
+        $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        getBuild();
+
+    } catch(Exception $err) {
+        $_SESSION['message'] = "Something went wrong while removing that item";
+        var_dump($err);
+        exit();
+        $_SESSION['build'] = "Error"; // TODO this should be better...
+        header("location: ./build.php");
+    }
+
+    
 }
 
 /* chose action */
@@ -118,6 +192,18 @@ switch ($action) {
 
     case 'getBuild':
     getBuild($db);
+    break;
+
+    case 'addToBuild':
+    addToBuild($db);
+    break;
+
+    case 'clearBuild':
+    clearBuild($db);
+    break;
+
+    case 'removeFromBuild':
+    removeFromBuild($db);
     break;
 }
 /* Go to home page by default */

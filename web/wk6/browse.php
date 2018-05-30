@@ -11,7 +11,9 @@ if (!isset($item)) {
     exit();
 }
 
+$message = $_SESSION['message'];
 $items = $_SESSION['items'];
+$itemType = $_SESSION['itemType'];
 
 ?>
 
@@ -29,18 +31,30 @@ $items = $_SESSION['items'];
     <?php require 'header.php'; ?>
     <main>
         <h1> Browse </h1>
+        <?php 
+        if (isset($message)) {
+            echo "<div id='message'><p>$message</p></div>";
+        }
+        ?>
         <div id='itemList' class='flex-wrapper space-around'>
             <?php 
             foreach ($items as $item) {
-                $name = $item['name'];
+                $itemName = $item['name'];
+                $itemId = $_SESSION['item_id'];
                 
                 echo "<div class='item-container' class='flex-wrapper space-around'>
                 <img src='".$item['image_location']."'>
-                <h4>$name</h4>
+                <h4>$itemName</h4>
                 <p class='price'>$".$item['price']."</p>
                 <p>".$item['description']."</p>
                 <div>
-                    <p class='button btn-disabled' >Add to Build</p>
+                    <form method='POST' action='controller.php'>
+                        <input type='hidden' name='action' value='addToBuild'>
+                        <input type='hidden' name='itemName' value='$itemName'>
+                        <input type='hidden' name='itemType' value='$itemType'>
+                        <input type='hidden' name='itemId' value='$itemId'>
+                        <input type='submit' class='button' value='Add to Build'>
+                    </form>
                 </div>
                 </div>";
             }

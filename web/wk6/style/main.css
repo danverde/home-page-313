@@ -175,7 +175,7 @@ a.button {
 }
 
 .button.btn-warning {
-    background-color: var(--hover-btn-color);
+    background-color: #ff2020;
 }
 
 .button-lg {

@@ -7,7 +7,7 @@ if (!isset($_SESSION['build'])) {
 exit();
 }
 
-
+$message = $_SESSION['message'];
 $build = $_SESSION['build'];
 $total = 0;
 
@@ -27,6 +27,11 @@ $total = 0;
     <?php require 'header.php'; ?>    
     <main>
         <h1>My Build</h1>
+        <?php
+        if (isset($message)) {
+            echo "<div id='message'><p>$message</p></div>";
+        }
+        ?>
         <table>
             <thead>
                 <tr>
@@ -39,22 +44,31 @@ $total = 0;
             <tbody>
                 <?php 
                 foreach ($build as $item) {
-                    $price = $item['price'];
-                    $name = $item['name'];
-                    $component = $item['item_type_name'];
-                    $total += $price;
+                    $itemPrice = $item['price'];
+                    $itemName = $item['name'];
+                    $itemType = $item['item_type_name'];
+                    $id = $item['item_id'];
+                    $total += $itemPrice;
 
-                    if ($component === 'cpu' || $component === 'gpu' || $component === 'psu') {
-                        $component = strtoupper($component);
+                    if ($itemType === 'cpu' || $component === 'gpu' || $itemType === 'psu') {
+                        $itemType = strtoupper($itemType);
                     } else {
-                        $component = ucfirst($component);
+                        $itemType = ucfirst($itemType);
                     }
 
                     echo "<tr>
-                        <td>$component</td>
-                        <td>$name</td>
-                        <td>1x</td>
-                        <td>$$price</td>
+                        <td>$itemType</td>
+                        <td>$itemName</td>
+                        <td>
+                            <form method='POST' action='controller.php'>
+                                <input type='hidden' name='action' value='removeFromBuild'>
+                                <input type='hidden' name='itemType' value='$itemType'>
+                                <input type='hidden' name='itemName' value='$itemName'>
+                                <input type='hidden' name='itemId' value='$id'>
+                                <input type='submit' value='Remove' class='button btn-warning'>
+                            </form>
+                        </td>
+                        <td>$$itemPrice</td>
                     </tr>";
                 }
                 ?>

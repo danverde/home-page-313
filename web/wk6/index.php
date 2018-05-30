@@ -7,6 +7,7 @@ if (!isset($_SESSION['itemTypes'])) {
     exit();
 }
 
+$message = $_SESSION['message'];
 $itemTypes = $_SESSION['itemTypes'];
 
 ?>
@@ -26,6 +27,11 @@ $itemTypes = $_SESSION['itemTypes'];
         <div class='main-banner'></div>
         <div id="about">
             <h1>Landing Message</h1>
+            <?php
+            if (isset($message)) {
+                echo "<div id='message'><p>$message</p></div>";
+            }
+            ?>
             <p>This is a super cool &amp; important message all about this website, computers, tacos, and other nerdy stuff. Yay! (Just kidding about the 🌮's... Sorry...)</p>
         </div>
         <!-- <div class='message'><p>This is a message!</p></div> -->
