@@ -29,7 +29,7 @@ $itemTypes = $_SESSION['itemTypes'];
             <?php
             // message is defined in the header
             if (isset($message)) {
-                echo "<div id='message'><p>$message</p></div>";
+                echo $message;
             }
             ?>
             <p>This is a super cool &amp; important message all about this website, computers, tacos, and other nerdy stuff. Yay! (Just kidding about the 🌮's... Sorry...)</p>

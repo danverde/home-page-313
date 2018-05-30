@@ -35,7 +35,7 @@ $buildItemId = $_SESSION['buildItemId'];
         <?php 
         // message is defined in the header
         if (isset($message)) {
-            echo "<div id='message'><p>$message</p></div>";
+            echo $message;
         }
         ?>
         <div id='itemList' class='flex-wrapper space-around'>

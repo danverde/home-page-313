@@ -33,7 +33,7 @@ $total = 0;
         <?php
         // message is defined in the header
         if (isset($message)) {
-            echo "<div id='message'><p>$message</p></div>";
+            echo $message;
         }
         ?>
         <table>
