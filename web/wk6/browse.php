@@ -41,7 +41,10 @@ $items = $_SESSION['items'];
                 <p class='price'>$".$item['price']."</p>
                 <p>".$item['description']."</p>
                 <div>
-                    <p class='button btn-disabled' >Add to Build</p>
+                    <form method='POST' action='controller.php'>
+                        <input type='hidden' name='action' value='addToBuild'>
+                        <input type='submit' class='button' value='Add to Build'>
+                    </form>
                 </div>
                 </div>";
             }

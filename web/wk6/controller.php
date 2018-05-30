@@ -103,6 +103,18 @@ function getBuild($db) {
     exit();
 }
 
+function addToBuild($db) {
+
+}
+
+function clearBuild($db) {
+
+}
+
+function removeFromBuild($db) {
+
+}
+
 /* chose action */
 switch ($action) {
     case 'getItemTypes':
@@ -115,6 +127,18 @@ switch ($action) {
 
     case 'getBuild':
     getBuild($db);
+    break;
+
+    case 'addToBuild':
+    addToBuild($db);
+    break;
+
+    case 'clearBuild':
+    clearBuild($db);
+    break;
+
+    case 'removeFromBuild':
+    removeFromBuild($db);
     break;
 }
 /* Go to home page by default */
