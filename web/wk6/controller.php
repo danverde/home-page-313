@@ -95,6 +95,12 @@ function getBuild($db) {
     }
 
     try {
+        $stmt = $db->prepare('SELECT item_type_id, item_type_name FROM item_type;');
+        $stmt->execute();
+        $itemTypes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $_SESSION['itemTypes'] = $itemTypes;
+
         $stmt = $db->prepare('SELECT i.item_id, i.name, i.price, it.item_type_name
         FROM items AS i
         INNER JOIN builds AS bu ON (bu.user_id=:userId)
@@ -109,8 +115,8 @@ function getBuild($db) {
         OR bu.psu_id = i.item_id;');
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $_SESSION['build'] = $rows;
+        $build = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $_SESSION['build'] = $build;
         
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items";
