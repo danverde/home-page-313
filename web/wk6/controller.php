@@ -165,10 +165,10 @@ function removeFromBuild($db) {
     var_dump($userId);
 
     try {
-        // $stmt = $db->prepare('UPDATE builds SET :itemType_id = null WHERE user_id=:userId');
-        $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=".$userId);
-        // $stmt->bindValue(':itemType_id', $itemTypeIdSelector, PDO::PARAM_STR);
-        // $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        // $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector." = null WHERE user_id=".$userId);
+        $stmt = $db->prepare('UPDATE builds SET :itemType_id = null WHERE user_id=:userId');
+        $stmt->bindValue(':itemType_id', $itemTypeIdSelector, PDO::PARAM_STR);
+        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
