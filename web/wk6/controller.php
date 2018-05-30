@@ -167,16 +167,11 @@ function removeFromBuild($db, $itemType) {
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        die();
-        return;
+        getBuild();
 
-        // getBuild();
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item: $err";
         $_SESSION['build'] = "Error"; // TODO this should be better...
-        var_dump($err);
-        die();
-        return;
         header("location: ./build.php");
         exit();
     }
@@ -207,9 +202,6 @@ switch ($action) {
     break;
 
     case 'removeFromBuild':
-    print('hi');
-    die();
-    return;
     removeFromBuild($db);
     break;
 }

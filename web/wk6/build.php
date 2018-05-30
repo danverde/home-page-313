@@ -60,7 +60,7 @@ $total = 0;
                         <td>$itemType</td>
                         <td>$itemName</td>
                         <td>
-                            <form method='POST' acton='controller.php'>
+                            <form method='POST' action='controller.php'>
                                 <input type='hidden' name='action' value='removeFromBuild'>
                                 <input type='hidden' name='itemType' value='$itemType'>
                                 <input type='hidden' name='itemName' value='$itemName'>
