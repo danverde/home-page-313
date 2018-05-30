@@ -70,6 +70,9 @@ function browse($db) {
         // grab items from build with corresponding itemType
         // add 'buildItemId' property to item which is included in the current users build
         // TODO explain lack of PDO filtering
+
+        var_dump($itemTypeIdSelector);
+        var_dump($userId);
         $stmt = $db->prepare("SELECT item_id
         FROM items AS i 
         JOIN builds AS bu ON user_id=:userId
