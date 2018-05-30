@@ -173,7 +173,9 @@ function removeFromBuild($db) {
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
-        $_SESSION['build'] = "Error"; // TODO this should be better...
+        var_dump($err);
+        die();
+        // TODO this should be better...
         getBuild();
         // header("location: ./build.php");
     }
