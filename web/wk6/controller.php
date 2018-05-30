@@ -153,12 +153,24 @@ function clearBuild($db) {
 }
 
 function removeFromBuild($db, $itemType) {
+    $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
+    $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
+    $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
+    $itemTypeIdSelector = $itemType."_id";
 
     try {
-
+        $stmt = $db->prepare('UPDATE builds SET :itemId=NULL WHERE user_id=:userId');
+        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
+        $stmt->execute();
+        
     } catch(Exception $err) {
-
+        $_SESSION['message'] = "Something went wrong while removing that item: $err";
+        // TODO redirect to build
     }
+
+    getBuild();
+    
 }
 
 /* chose action */
