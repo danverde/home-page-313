@@ -158,18 +158,22 @@ function removeFromBuild($db, $itemType) {
     $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
     $itemTypeIdSelector = $itemType."_id";
 
+    var_dump($_POST);
+
     try {
         $stmt = $db->prepare('UPDATE builds SET :itemId=NULL WHERE user_id=:userId');
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
         $stmt->execute();
         
+        getBuild();
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item: $err";
-        // TODO redirect to build
+        $_SESSION['build'] = "Error"; // TODO this should be better...
+        header("location: ./build.php");
+        exit();
     }
 
-    getBuild();
     
 }
 
