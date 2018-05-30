@@ -7,6 +7,7 @@ if (!isset($item)) {
     header("Location: ./controller.php?action=browse");
     exit();
 } else if ($_SESSION['itemType'] !== $item){
+    /* Enables user to change item type in the URL */
     var_dump($_SESSION['itemType']);
     var_dump($item);
     header("Location: ./controller.php?action=browse&item=$item");
@@ -43,7 +44,10 @@ $itemType = $_SESSION['itemType'];
             foreach ($items as $item) {
                 $itemName = $item['name'];
                 $itemId = $_SESSION['item_id'];
-                
+
+                var_dump($_SESSION['buildItemId']);
+                var_dump($item['item_id']);
+
                 $action = 'addToBuild';
                 $warning = '';
                 if ($_SESSION['buildItemId'] == $item['item_id']) {
