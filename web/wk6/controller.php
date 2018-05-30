@@ -58,9 +58,8 @@ function browse($db) {
         $stmt->execute();
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        // $_SESSION['items'] = $items;
+        $_SESSION['items'] = $items;
         
-        var_dump($itemType);
         $itemTypeIdSelector = formatColId($itemType);
 
         if ($itemTypeIdSelector === NULL) {
