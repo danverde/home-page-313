@@ -79,9 +79,10 @@ header nav a {
 
 /*** START TEMPLATES ***/
 #message {
+    box-sizing: border-box;
     padding: 0 15px;
     background-color: #c6ffc6;
-    order: 1px solid green;
+    border: 1px solid green;
 }
 
 #message.error {
