@@ -44,14 +44,9 @@ $buildItemId = $_SESSION['buildItemId'];
                 $itemName = $item['name'];
                 $itemId = $item['item_id'];
 
-                var_dump($buildItemId);
-                var_dump($itemId);
-                
                 $action = 'addToBuild';
                 $warning = '';
                 if ($buildItemId === $itemId) {
-                    print('same');
-                    die();
                     $action = 'removeFromBuild';
                     $warning = 'btn-warning';
                 }
