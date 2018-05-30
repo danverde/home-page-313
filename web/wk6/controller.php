@@ -69,7 +69,7 @@ function browse($db) {
         
         // TODO 
         // grab items from build with corresponding itemType
-        // add 'buildItem' property to item which is included in the current users build
+        // add 'buildItemId' property to item which is included in the current users build
         // TODO explain lack of PDO filtering
         $stmt = $db->prepare("SELECT item_id
         FROM items AS i 

@@ -7,7 +7,9 @@ if (!isset($item)) {
     header("Location: ./controller.php?action=browse");
     exit();
 } else if ($_SESSION['itemType'] !== $item){
-    header("Location: ./controller.php?action=browse&item=$item");
+    var_dump($_SESSION['itemType']);
+    var_dump($item);
+    // header("Location: ./controller.php?action=browse&item=$item");
     exit();
 }
 
