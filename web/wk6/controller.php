@@ -111,9 +111,6 @@ function addToBuild($db) {
     $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
     $itemTypeIdSelector = $itemType."_id";
 
-    var_dump($_POST);
-    var_dump($itemTypeIdSelector);
-    var_dump($itemType);
     /* check to see if the item needs to be removed first */
 
     try {
@@ -121,10 +118,11 @@ function addToBuild($db) {
         $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
         // $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
         $stmt->execute();
-        $buildItem = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $buildItem = $stmt->fetch(PDO::FETCH_ASSOC);
 
         var_dump($buildItem);
         die();
+
     } catch(Exception $err) {
         var_dump($err);
         die();
