@@ -95,13 +95,18 @@ function getBuild($db) {
     }
 
     try {
-        $stmt = $db->prepare('SELECT item_type_id, item_type_name FROM item_type;');
+        $stmt = $db->prepare('SELECT item_type_id FROM item_type;');
         $stmt->execute();
         $itemTypes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $_SESSION['itemTypes'] = $itemTypes;
 
-        $stmt = $db->prepare('SELECT i.item_id, i.name, i.price, it.item_type_name
+        // TODO
+        // loop through each item type & get the corresponding build item
+        // OR
+        // loop through itemTypes & build to match items 
+
+        $stmt = $db->prepare('SELECT i.item_id, i.name, i.price, it.item_type_name, it.item_type_id
         FROM items AS i
         INNER JOIN builds AS bu ON (bu.user_id=:userId)
         INNER JOIN item_type AS it USING(item_type_id)
@@ -116,6 +121,10 @@ function getBuild($db) {
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $build = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        var_dump($build);
+        var_dump($itemTypes);
+
         $_SESSION['build'] = $build;
         
     } catch(PDOException $err) {
