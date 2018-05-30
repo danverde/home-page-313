@@ -108,7 +108,7 @@ function addToBuild($db) {
 
 
     $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
-    $itemtype = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
+    $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
     $itemTypeIdSelector = $itemType."_id";
 
     var_dump($_POST);
