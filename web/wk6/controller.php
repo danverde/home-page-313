@@ -73,6 +73,7 @@ function browse($db) {
 
         var_dump($itemTypeIdSelector);
         var_dump($userId);
+
         $stmt = $db->prepare("SELECT item_id
         FROM items AS i 
         JOIN builds AS bu ON user_id=:userId
@@ -82,7 +83,7 @@ function browse($db) {
         $buildItemId = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $_SESSION['buildItemId'] = $buildItemId;
-
+        exit();
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
