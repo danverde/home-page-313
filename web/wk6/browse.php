@@ -42,14 +42,14 @@ $buildItemId = $_SESSION['buildItemId'];
             <?php 
             foreach ($items as $item) {
                 $itemName = $item['name'];
-                $itemId = $_SESSION['item_id'];
+                // $itemId = $_SESSION['item_id'];
 
                 var_dump($buildItemId);
                 var_dump($item['item_id']);
                 
                 $action = 'addToBuild';
                 $warning = '';
-                if ($buildItemId === $item['item_id']) {
+                if ($buildItemId == $item['item_id']) {
                     print('match');
                     die();
                     $action = 'removeFromBuild';
