@@ -161,7 +161,6 @@ function removeFromBuild($db) {
         $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
     
         $itemTypeIdSelector = formatColId($itemType);
-        var_dump($itemTypeIdSelector);
 
         if ($itemTypeIdSelector === NULL) {
             throw new Exception("Invalid Column Id: $itemTypeIdSelector");
@@ -172,14 +171,14 @@ function removeFromBuild($db) {
         $stmt->execute();
         $rows = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        getBuild();
+        getBuild($db);
         
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
         // var_dump($err);
         // die();
         // TODO this should be better...
-        getBuild();
+        getBuild($db);
         // header("location: ./build.php");
     }
 
@@ -189,7 +188,6 @@ function removeFromBuild($db) {
 
 function formatColId($itemType) {
     $id = strtolower($itemType)."_id";
-    var_dump($id);
     $validIds = array('motherboard_id', 'cpu_id', 'gpu_id', 'fan_id', 'memory_id', 'storage_id', 'tower_id', 'psu_id');
     if (in_array($id, $validIds)) {
         return $id;
