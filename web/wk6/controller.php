@@ -60,7 +60,7 @@ function browse($db) {
         
         // $_SESSION['items'] = $items;
         
-
+        var_dump($itemType);
         $itemTypeIdSelector = formatColId($itemType);
 
         if ($itemTypeIdSelector === NULL) {
