@@ -82,7 +82,7 @@ function browse($db) {
         $_SESSION['message'] = "Unable to get items: $err";
     }
 
-    header("location: ./browse.php?item=$itemType");
+    header("location: ./browse.php?itemType=$itemType");
     exit();
 }
 
@@ -123,39 +123,32 @@ function getBuild($db) {
 }
 
 function addToBuild($db) {
+    $userId = $_SESSION['userId'];
+
     $itemId = filter_input(INPUT_POST, 'itemId', FILTER_SANITIZE_STRING);
     $itemType = filter_input(INPUT_POST, 'itemType', FILTER_SANITIZE_STRING);
     $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
-    $itemTypeIdSelector = $itemType."_id";
-
     
-    /* check to see if the item needs to be removed first */
     try {
-        $stmt = $db->prepare('SELECT :itemId FROM builds WHERE user_id=:userId');
-        $stmt->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
-        $stmt->execute();
-        $buildItem = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // TODO  I don't think this is correct...
-        if ($buildItems != false) {
-            $_SESSION['message'] = "Must remove existing $itemType from build first";
-            header("location: ./browse.php?item=$itemType");
-            exit();
-            return;    
+        $itemTypeIdSelector = formatColId($itemType);
+        if ($itemTypeIdSelector === NULL) {
+            throw new Exception("Invalid Column Id: $itemTypeIdSelector");
         }
 
-        // $_SESSION['message'] = "$itemName successfully added to build";
-        $_SESSION['message'] = "Successfully queried the DB for that Item";
+        $stmt = $db->prepare("UPDATE builds SET ".$itemTypeIdSelector."=:itemId WHERE user_id=:userId");
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindValue(':itemId', $itemTypeIdSelector, PDO::PARAM_STR);
+        $stmt->execute();
 
+        $_SESSION['message'] = "Successfully added $itemName To build";
 
     } catch(Exception $err) {
-        var_dump($err);
-        die();
+        $_SESSION['message'] = "Unable to add $itemName To build";
+        // var_dump($err); // TESTING
+        // die(); //TESTING
+    } finally {
+        browse($db);
     }
-
-    header("location: ./browse.php?item=$itemType");
-    exit();
 }
 
 /*************************************************
@@ -204,7 +197,6 @@ function removeFromBuild($db) {
         $itemName = filter_input(INPUT_POST, 'itemName', FILTER_SANITIZE_STRING);
     
         $itemTypeIdSelector = formatColId($itemType);
-
         if ($itemTypeIdSelector === NULL) {
             throw new Exception("Invalid Column Id: $itemTypeIdSelector");
         }
@@ -227,7 +219,7 @@ function removeFromBuild($db) {
             getBuild($db);
         } else {
             browse($db);
-            // header("location: ./browse.php?item=$itemType");
+            // header("location: ./browse.php?itemType=$itemType");
             // exit();
         }
     }
