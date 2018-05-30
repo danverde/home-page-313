@@ -42,6 +42,13 @@ $itemType = $_SESSION['itemType'];
                 $itemName = $item['name'];
                 $itemId = $_SESSION['item_id'];
                 
+                $action = 'addToBuild';
+                $warning = '';
+                if ($item['used'] === true) {
+                    $action = 'removeFromBuild';
+                    $warning = 'btn-warning';
+                }
+
                 echo "<div class='item-container' class='flex-wrapper space-around'>
                 <img src='".$item['image_location']."'>
                 <h4>$itemName</h4>
@@ -49,12 +56,12 @@ $itemType = $_SESSION['itemType'];
                 <p>".$item['description']."</p>
                 <div>
                     <form method='POST' action='controller.php'>
-                        <input type='hidden' name='action' value='addToBuild'>
+                        <input type='hidden' name='action' value='$action'>
                         <input type='hidden' name='itemName' value='$itemName'>
                         <input type='hidden' name='itemType' value='$itemType'>
                         <input type='hidden' name='itemId' value='$itemId'>
-                        <input type='submit' class='button' value='Add to Build'>
-                    </form>
+                        <input type='submit' class='button $warning' value='Add to Build'>
+                        </form>
                 </div>
                 </div>";
             }
