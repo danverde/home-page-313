@@ -44,13 +44,23 @@ $buildItemId = $_SESSION['buildItemId'];
                 $itemName = $item['name'];
                 $itemId = $item['item_id'];
 
-                $action = 'addToBuild';
-                $warning = '';
                 if ($buildItemId === $itemId) {
-                    $action = 'removeFromBuild';
-                    $warning = 'btn-warning';
-                }
-
+                    echo "<div class='item-container' class='flex-wrapper space-around'>
+                    <img src='".$item['image_location']."'>
+                    <h4>$itemName</h4>
+                    <p class='price'>$".$item['price']."</p>
+                    <p>".$item['description']."</p>
+                    <div>
+                    <form method='POST' action='controller.php'>
+                        <input type='hidden' name='action' value='removeFromBuild'>
+                        <input type='hidden' name='itemName' value='$itemName'>
+                        <input type='hidden' name='itemType' value='$itemType'>
+                        <input type='hidden' name='itemId' value='$itemId'>
+                        <input type='submit' class='button btn-warning' value='Remove From Build'>
+                        </form>
+                    </div>
+                    </div>";
+                } else {
                 echo "<div class='item-container' class='flex-wrapper space-around'>
                 <img src='".$item['image_location']."'>
                 <h4>$itemName</h4>
@@ -58,11 +68,11 @@ $buildItemId = $_SESSION['buildItemId'];
                 <p>".$item['description']."</p>
                 <div>
                     <form method='POST' action='controller.php'>
-                        <input type='hidden' name='action' value='$action'>
+                        <input type='hidden' name='action' value='addToBuild'>
                         <input type='hidden' name='itemName' value='$itemName'>
                         <input type='hidden' name='itemType' value='$itemType'>
                         <input type='hidden' name='itemId' value='$itemId'>
-                        <input type='submit' class='button $warning' value='Add to Build'>
+                        <input type='submit' class='button' value='Add to Build'>
                         </form>
                 </div>
                 </div>";
