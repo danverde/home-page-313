@@ -101,19 +101,18 @@ INSERT INTO builds(user_id, motherboard_id, cpu_id, gpu_id, gpu_count, fan_id, f
 
 
 
-SELECT i.name, i.price, it.item_type_name
-FROM items AS i
-INNER JOIN builds AS bu ON (bu.user_id = 1)
-INNER JOIN item_type AS it ON (it.item_type_id = i.item_type_id)
-WHERE bu.motherboard_id = i.item_id
-OR bu.cpu_id = i.item_id
-OR bu.gpu_id = i.item_id
-OR bu.storage_id = i.item_id
-OR bu.memory_id = i.item_id
-OR bu.tower_id = i.item_id
-OR bu.fan_id = i.item_id
-OR bu.psu_id = i.item_id;
-
+-- SELECT i.name, i.price, it.item_type_name
+-- FROM items AS i
+-- INNER JOIN builds AS bu ON (bu.user_id = 1)
+-- INNER JOIN item_type AS it USING (item_type_id)
+-- WHERE bu.motherboard_id = i.item_id
+-- OR bu.cpu_id = i.item_id
+-- OR bu.gpu_id = i.item_id
+-- OR bu.storage_id = i.item_id
+-- OR bu.memory_id = i.item_id
+-- OR bu.tower_id = i.item_id
+-- OR bu.fan_id = i.item_id
+-- OR bu.psu_id = i.item_id;
 
 -- ADD ADDITIONAL ITEMS
 
@@ -140,3 +139,7 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 
 INSERT INTO items(item_type_id, name, description, price, image_location) 
 (SELECT item_type_id, 'Corsair RM750x', '750 Watt 80 Plus Gold ATX Modular Power Supply', 119, './images/rm750x.jpg' FROM item_type WHERE item_type_name = 'psu');
+
+
+SELECT item_id FROM items i 
+JOIN builds bu ON user_id=1 AND bu.motherboard_id=i.item_id;
