@@ -59,31 +59,40 @@
             <div class="sectionWrapper">
                 <h2 class="headline">Assignments</h2>
                 <h3>More Coming Weekly</h3>
-                <p>Project</p>
-                <ul>
-                    <li><a href="prj/index.php">Project</a></li>
-                </ul>
-                <p>Week 2</p>
-                <ul>
-                    <li><a href="wk2/helloWorld.html">Hello World</a></li>
-                </ul>
-                <p>Week 3</p>
-                <ul>
-                    <li><a href="wk3/wk3Teach.php">Week 3 Teach one another</a></li>
-                    <li><a href="wk3/counter.php">Week 3 Session Counter</a></li>
-                    <li><a href="wk3/personal/browse.php">Week 3 Assignment Cart</a></li>
-                </ul>
-                <p>Week 4</p>
-                <p>Week 5</p>
-                <ul>
-                    <li><a href="wk5/team.php">Week 5 Team Activity</a></li>
-                    <li><a href="wk5/index.php">Read Only PHP Project</a></li>
-                </ul>
-                <p>Week 6</p>
-                <ul>
-                    <li><a href="wk6/index.php">Read Write PHP Project</a></li>
-                </ul>
-                <p>Week 7</p>
+                <div class="inline">
+                    <h4 class="headline">PHP</h4>
+                    <p><a href="phpPrj/index.php">Project (PC Builder)</a></p>
+                    <p>Week 2</p>
+                    <ul>
+                        <li><a href="wk2/helloWorld.html">Hello World</a></li>
+                    </ul>
+                    <p>Week 3</p>
+                    <ul>
+                        <li><a href="wk3/wk3Teach.php">Week 3 Teach one another</a></li>
+                        <li><a href="wk3/counter.php">Week 3 Session Counter</a></li>
+                        <li><a href="wk3/personal/browse.php">Week 3 Assignment Cart</a></li>
+                    </ul>
+                    <p>Week 5</p>
+                    <ul>
+                        <li><a href="wk5/team.php">Week 5 Team Activity</a></li>
+                        <li><a href="wk5/index.php">Read Only PHP Project</a></li>
+                    </ul>
+                    <p>Week 6</p>
+                    <ul>
+                        <li><a href="wk6/index.php">Read Write PHP Project</a></li>
+                    </ul>
+                    <p>Week 7</p>
+                </div>
+                <div class="inline">
+                <h4 class="headline">Node</h4>
+                    <p><a href="nodePrj/index.php">Project</a></p>
+                    <p>Week 8</p>
+                    <p>Week 9</p>
+                    <p>Week 10</p>
+                    <p>Week 11</p>
+                    <p>Week 12</p>
+                    <p>Week 13</p>
+                </div>
             </div>
         </section>
     </main>
