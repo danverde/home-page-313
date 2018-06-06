@@ -7,14 +7,24 @@ if (isset($message)) {
 }
 $_SESSION['message'] = null;
 
+$loggedIn = isset($_SESSION['userId']);
+
 ?>
 
 <header>
     <div class='body-width'>
         <h1><a href='./index.php'>PC Builder</a></h1>
         <nav>
-            <p class="button btn-disabled">Login</p>
-            <a class="button btn-primary" href="./build.php?">My Build</a>
+            <?php
+            if ($loggedIn === true) {
+                echo "<a class='button' href='controller.php?action=logout'>Logout</a>
+                    <a class='button btn-primary' href='./build.php?'>My Build</a>";
+            } else {
+                echo "<a class='button' href='login.php'>Login</a>";
+            }
+            ?>
+            <!-- <p class="button btn-disabled">Login</p> -->
+            <!-- <a class="button btn-primary" href="./build.php?">My Build</a> -->
         </nav>
     </div>
 </header>
