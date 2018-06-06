@@ -274,18 +274,19 @@ function login($db) {
         $stmt->execute();
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($userData === false || password_verify($rawPassword, $userData['password']) === false) {
+        /* if a user was found compare passwords */
+        if (count($userData) > 0 && password_verify($password, $user['password']) === true) {
             var_dump($userData);
             exit();
             
-            // nothing returned, we're good to go
+            $_SESSION['userId'] = $userData['user_id'];
+            header('location: ./index.php');
+            exit();
+        } else {
+            /* no user exists with that email */
             $_SESSION['message'] = "Invalid username or password";
             $_SESSION['messageType'] = 'error';
             header('location: ./login.php');
-            exit();
-        } else {
-            $_SESSION['userId'] = $userData['user_id'];
-            header('location: ./index.php');
             exit();
         }
 
