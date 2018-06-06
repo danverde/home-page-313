@@ -18,7 +18,6 @@ if (!isset($_SESSION['userId']) && ($action !== 'login' || $action !== 'register
     header("location: ./login.php");
     exit();
 }
-1
 /* Start functions */
 
 /***********************************
