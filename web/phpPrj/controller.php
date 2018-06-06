@@ -137,6 +137,9 @@ function getBuild($db) {
     exit();
 }
 
+/***********************************************
+ * Add a given item to the current user's build
+ ***********************************************/
 function addToBuild($db) {
     $userId = $_SESSION['userId'];
 
@@ -262,8 +265,6 @@ function formatColId($itemType) {
  * user_id to the session variable
  *********************************/
 function login($db) {
-    print('login called');
-    exit();
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $rawPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
