@@ -276,6 +276,7 @@ function login($db) {
 
         /* if a user was found compare passwords */
         if (count($userData) > 0 && password_verify($password, $userData['password']) === true) {
+            $_SESSION['message'] = "Successfully Logged In";
             $_SESSION['userId'] = $userData['user_id'];
             header('location: ./index.php');
             exit();
