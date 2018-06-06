@@ -388,7 +388,7 @@ switch ($action) {
     break;
 
     case 'browse':
-    browse($db);
+    browse($db, NULL);
     break;
 
     case 'getBuild':
