@@ -278,15 +278,19 @@ function login($db) {
             exit();
         } else {
             $_SESSION['userId'] = $userData['user_id'];
-            header('location: ./index.php');
+
+            var_dump($userData);
+            var_dump(password_verify($rawPassword, $userData['password']));
+
             exit();
+            header('location: ./index.php');
         }
 
     } catch(Exception $err) {
         $_SESSION['message'] = "We were unable to log you in.";
         $_SESSION['messageType'] = 'error';
         // var_dump($err); // TESTING
-        header("location: ./logiin.php");
+        header("location: ./login.php");
         exit();
     }
 }
