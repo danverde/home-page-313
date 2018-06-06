@@ -43,12 +43,15 @@ function getItemTypes($db) {
 /*********************************************
  * Get all items of a given type from the DB
  ********************************************/
-function browse($db) {
+function browse($db, $itemType) {
     $userId = $_SESSION['userId'];
-    $itemType = filter_input(INPUT_GET, 'itemType', FILTER_SANITIZE_STRING);
-    if (empty($itemType)) {
+
+    if(!isset($itemType) && !isset($_GET['itemType'])) {
         $itemType = 'motherboard';
+    } else if (!isset($itemType) && isset($_GET['itemType'])) {
+        $itemType = filter_input(INPUT_GET, 'itemType', FILTER_SANITIZE_STRING);
     }
+
     $itemType = strtolower($itemType);
     $_SESSION['itemType'] = $itemType;
 
@@ -164,10 +167,11 @@ function addToBuild($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "Unable to add $itemName To build";
         $_SESSION['messageType'] = 'error';
-        var_dump($err); // TESTING
-        die(); //TESTING
+        // TODO where to send us???
+        var_dump($err);
+        die();
     } finally {
-        browse($db);
+        browse($db, $itemType);
     }
 }
 
