@@ -168,8 +168,8 @@ function addToBuild($db) {
         $_SESSION['message'] = "Unable to add $itemName To build";
         $_SESSION['messageType'] = 'error';
         // TODO where to send us???
-        var_dump($err);
-        die();
+        // var_dump($err);
+        // die();
     } finally {
         browse($db, $itemType);
     }
@@ -237,13 +237,14 @@ function removeFromBuild($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
         $_SESSION['messageType'] = 'error';
+        // TODO where to send these??
         // var_dump($err); // TESTING
-        // die(); // TESTING
+        // die();
     } finally {
         if ($caller === "build") {
             getBuild($db);
         } else {
-            browse($db, NULL);
+            browse($db, $itemType);
         }
     }
 
