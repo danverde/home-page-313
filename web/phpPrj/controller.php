@@ -328,7 +328,7 @@ function register($db) {
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($users !== false){
+        if (count($users) > 0){
             var_dump($users);
             exit();
             $_SESSION['message'] = "That email is already in use";
