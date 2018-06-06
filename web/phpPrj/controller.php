@@ -297,8 +297,66 @@ function login($db) {
     }
 }
 
+/**********************************************
+ * Create a new user in the users table
+ * & a corresponding build in the build table.
+ ***********************************************/
 function register($db) {
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $rawPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $confirmPassword = filter_input(INPUT_POST, 'confirmpassword', FILTER_SANITIZE_STRING);
+    $firstName = filter_input(INPUT_POST, 'fName', FILTER_SANITIZE_STRING);
+    $lastName = filter_input(INPUT_POST, 'lName', FILTER_SANITIZE_STRING);
+
+    if ($rawPassword !== $confirmPassword) {
+        $_SESSION['message'] = "Passwords must match";
+        $_SESSION['messageType'] = 'error';
+        header('location: ./register.php');
+        exit();
+    }
+
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
     
+    try {
+        /* make sure email isn't already used */
+        $stmt = $db->prepare("SELECT email FROM users WHERE email = :email");
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($users !== false){
+            $_SESSION['message'] = "That email is already in use";
+            $_SESSION['messageType'] = 'error';
+            header("location: ./register.php");
+            exit();
+        } else {
+            $stmt = $db->prepare("INSERT INTO users(first_name, last_name, email, password) VALUES(:firstName, :lastName, :email, :password)");
+            $stmt->bindValue(':firstName', $firstName, PDO::PARAM_STR);
+            $stmt->bindValue(':lastName', $lastName, PDO::PARAM_STR);
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':password', $passwordHash, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $newUserId = $db->lastInsertId(users_user_id_seq);
+
+            $stmt = $db->prepare("INSERT INTO builds(user_id) VALUES(:userId)");
+            $stmt->bindValue(':userId', $newUserId, PDO::PARAM_STR);
+            $stmt->execute();
+
+
+            $_SESSION['userId'] = $newUserId;
+            $_SESSION['message'] = "You have successfully Registered";
+            header('location: ./controller.php');
+            exit();
+        }
+
+    } catch(Exception $err) {
+        $_SESSION['message'] = "We were unable to log you in.";
+        $_SESSION['messageType'] = 'error';
+        // var_dump($err); // TESTING
+        header("location: ./login.php");
+        exit();
+    }
 }
 
 /****************************************

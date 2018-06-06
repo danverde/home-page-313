@@ -25,16 +25,17 @@ if (isset($_SESSION['users'])) {
     <?php require 'header.php' ?>
     <main>
         <div class='main-banner'></div>
-        <?php
-            // message is defined in the header
-            if (isset($message)) {
-                echo $message;
-            }
-        ?>
         <div id="register">
             <h1>Register</h1>
+            <?php
+                // message is defined in the header
+                if (isset($message)) {
+                    echo $message;
+                }
+            ?>
             <div class="form-wrapper flex-wrapper space-between">
-                <form method="POST" action="controller.php?action=register">
+                <form method="POST" action="controller.php">
+                    <input type="hidden" name="action" value="register">
                     <div class="flex-wrapper space-between">
                         <label for="fName">First name:</label>
                         <input type="text" id="fName" name="fName">

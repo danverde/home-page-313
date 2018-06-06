@@ -33,7 +33,7 @@ if (isset($_SESSION['users'])) {
         ?>
             <div class="form-wrapper">
                 <form method="POST" action="controller.php">
-                <input type='hidden' name='action' value='login'>
+                    <input type='hidden' name='action' value='login'>
                     <div class="flex-wrapper space-between">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email">
