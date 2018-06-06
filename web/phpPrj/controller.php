@@ -367,6 +367,13 @@ function register($db) {
     }
 }
 
+
+function logout() {
+    session_destroy();
+    header('location: ./login.php');
+    exit();
+}
+
 /****************************************
  * Chose which function to call based
  * off the action property
@@ -402,6 +409,10 @@ switch ($action) {
 
     case 'register':
     register($db);
+    break;
+
+    case 'logout':
+    logout($db);
     break;
 
     /* Go to home page by default */
