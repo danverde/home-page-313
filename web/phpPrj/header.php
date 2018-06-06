@@ -21,11 +21,9 @@ $loggedIn = isset($_SESSION['userId']);
                     <a class='button btn-primary' href='./build.php?'>My Build</a>";
             } else {
                 echo "<a class='button' href='./login.php'>Login</a>
-                <a class='button primary' href='./login.php'>Register</a>";
+                <a class='button primary' href='./register.php'>Register</a>";
             }
             ?>
-            <!-- <p class="button btn-disabled">Login</p> -->
-            <!-- <a class="button btn-primary" href="./build.php?">My Build</a> -->
         </nav>
     </div>
 </header>
