@@ -184,6 +184,7 @@ a.button {
     /* text-decoration: underline; */
     background-color: var(--hover-btn-color);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .button.btn-disabled {
