@@ -32,7 +32,7 @@ if (isset($_SESSION['users'])) {
         <div id="login">
             <h1>Login</h1>
             <div class="form-wrapper">
-            <form method="POST" action="controller.php?action=login">
+                <form method="POST" action="controller.php?action=login">
                     <div class="flex-wrapper space-between">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email">
