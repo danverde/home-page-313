@@ -325,6 +325,8 @@ function register($db) {
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if ($users !== false){
+            var_dump($users);
+            exit();
             $_SESSION['message'] = "That email is already in use";
             $_SESSION['messageType'] = 'error';
             header("location: ./register.php");
