@@ -13,11 +13,9 @@ if ($action == null) {
 }
 
 /* if no user is provided, go to login/ register page */
-// TODO do I need to get this working?
 if (!isset($_SESSION['userId']) && ($action !== 'login' && $action !== 'register')) {
-    var_dump($action);
-    exit();
     header("location: ./login.php");
+    exit();
 }
 /* Start functions */
 
