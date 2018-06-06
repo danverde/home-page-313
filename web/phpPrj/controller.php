@@ -277,7 +277,7 @@ function login($db) {
         /* if a user was found compare passwords */
         if (count($userData) > 0 && password_verify($password, $userData['password']) === true) {
             var_dump($userData); // TESTING
-            var_dump(password_verify($password, $user['password'])); // TESTING
+            var_dump(password_verify($password, $userData['password'])); // TESTING
             exit();
             
             $_SESSION['userId'] = $userData['user_id'];
@@ -285,7 +285,7 @@ function login($db) {
             exit();
         } else {
             var_dump($userData); // TESTING
-            var_dump(password_verify($password, $user['password'])); // TESTING
+            var_dump(password_verify($password, $userData['password'])); // TESTING
             exit();
 
             /* no user exists with that email */
