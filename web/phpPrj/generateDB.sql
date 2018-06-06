@@ -48,7 +48,9 @@ CREATE TABLE builds
     psu_id INT REFERENCES items
 );
 
-ALTER TABLE users ADD build_id INT REFERENCES builds;
+-- Technically this shouldn't exist b/c builds already references users, 
+-- but at this point it would take a lot of work to move everything around
+-- ALTER TABLE users ADD build_id INT REFERENCES builds;
 
 
 -- START ADDING VALUES!
@@ -143,3 +145,7 @@ INSERT INTO items(item_type_id, name, description, price, image_location)
 
 SELECT item_id FROM items i 
 JOIN builds bu ON user_id=1 AND bu.motherboard_id=i.item_id;
+
+
+INSERT INTO users(first_name, last_name, email, password) VALUES ('Joe', 'Shmoe', 'shmoe@gmail.com', 'password');
+INSERT INTO builds(user_id) VALUES (2);

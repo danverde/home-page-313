@@ -256,6 +256,45 @@ function formatColId($itemType) {
     }
 }
 
+/*********************************
+ * Authenticate a user. Saves 
+ * user_id to the session variable
+ *********************************/
+function login($db) {
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $rawPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+    try {
+        $stmt = $db->prepare("SELECT user_id, password FROM users WHERE email = :email");
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($userData === false || password_verify($rawPassword, $userData['password']) === false) {
+            // nothing returned, we're good to go
+            $_SESSION['message'] = "Invalid username or password";
+            $_SESSION['messageType'] = 'error';
+            header('location: ./login.php');
+            exit();
+        } else {
+            $_SESSION['userId'] = $userData['user_id'];
+            header('location: ./index.php');
+            exit();
+        }
+
+    } catch(Exception $err) {
+        $_SESSION['message'] = "We were unable to log you in.";
+        $_SESSION['messageType'] = 'error';
+        // var_dump($err); // TESTING
+        header("location: ./logiin.php");
+        exit();
+    }
+}
+
+function register($db) {
+    
+}
+
 /****************************************
  * Chose which function to call based
  * off the action property
@@ -283,6 +322,14 @@ switch ($action) {
 
     case 'removeFromBuild':
     removeFromBuild($db);
+    break;
+
+    case 'login':
+    login($db);
+    break;
+
+    case 'register':
+    register($db);
     break;
 
     /* Go to home page by default */
