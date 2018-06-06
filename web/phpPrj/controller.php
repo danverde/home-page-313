@@ -243,7 +243,7 @@ function removeFromBuild($db) {
         if ($caller === "build") {
             getBuild($db);
         } else {
-            browse($db);
+            browse($db, NULL);
         }
     }
 
