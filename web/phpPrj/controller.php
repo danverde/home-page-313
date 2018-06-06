@@ -275,7 +275,7 @@ function login($db) {
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
         /* if a user was found compare passwords */
-        if (count($userData) > 0 && password_verify($password, $user['password']) === true) {
+        if (count($userData) > 0 && password_verify($password, $userData['password']) === true) {
             var_dump($userData); // TESTING
             var_dump(password_verify($password, $user['password'])); // TESTING
             exit();
