@@ -1,12 +1,13 @@
 <?php 
 session_start();
 
-if (isset($_SESSION['users'])) {
+// if (isset($_SESSION['users'])) {
     /* if you're already logged in then you don't need to be here */
     // header("Location: ./index.php");
     // exit();
-}
+// }
 
+if (isset($_SESSION['email'])) $email = $_SESSION['email'];
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ if (isset($_SESSION['users'])) {
                     <input type='hidden' name='action' value='login'>
                     <div class="flex-wrapper space-between">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" <?php if (isset($email)) echo "value='$email'";?>>
                     </div>
                     <div class="flex-wrapper space-between">
                         <label for="password">Password:</label>

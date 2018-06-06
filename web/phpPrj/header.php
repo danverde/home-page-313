@@ -20,7 +20,7 @@ $loggedIn = isset($_SESSION['userId']);
                 echo "<a class='button' href='controller.php?action=logout'>Logout</a>
                     <a class='button btn-primary' href='./build.php?'>My Build</a>";
             } else {
-                echo "<a class='button' href='login.php'>Login</a>";
+                echo "<a class='button' href='./login.php'>Login</a>";
             }
             ?>
             <!-- <p class="button btn-disabled">Login</p> -->

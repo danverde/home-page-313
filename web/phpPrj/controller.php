@@ -266,6 +266,8 @@ function login($db) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $rawPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
+    $_SESSION['email'] = $email;
+
     try {
         $stmt = $db->prepare("SELECT user_id, password FROM users WHERE email = :email");
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -329,8 +331,8 @@ function register($db) {
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (count($users) > 0){
-            var_dump($users);
-            exit();
+            // var_dump($users); // TESTING
+            // exit(); // TESTING
             $_SESSION['message'] = "That email is already in use";
             $_SESSION['messageType'] = 'error';
             header("location: ./register.php");
