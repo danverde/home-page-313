@@ -6,6 +6,7 @@ if (isset($message)) {
     $message = "<div class='message $messageType'><p>$message</p></div>";
 }
 $_SESSION['message'] = null;
+$_SESSION['messageType'] = null;
 
 $loggedIn = isset($_SESSION['userId']);
 

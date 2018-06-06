@@ -7,7 +7,10 @@ session_start();
     // exit();
 // }
 
-if (isset($_SESSION['email'])) $email = $_SESSION['email'];
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    $_SESSION['email'] = NULL;
+}
 
 ?>
 <!DOCTYPE html>

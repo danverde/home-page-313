@@ -275,6 +275,9 @@ function login($db) {
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($userData === false || password_verify($rawPassword, $userData['password']) === false) {
+            var_dump($userData);
+            exit();
+            
             // nothing returned, we're good to go
             $_SESSION['message'] = "Invalid username or password";
             $_SESSION['messageType'] = 'error';
@@ -282,12 +285,8 @@ function login($db) {
             exit();
         } else {
             $_SESSION['userId'] = $userData['user_id'];
-
-            var_dump($userData);
-            var_dump(password_verify($rawPassword, $userData['password']));
-
-            exit();
             header('location: ./index.php');
+            exit();
         }
 
     } catch(Exception $err) {

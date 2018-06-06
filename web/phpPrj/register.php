@@ -7,9 +7,18 @@ if (isset($_SESSION['users'])) {
     // exit();
 }
 
-if (isset($_SESSION['firstName'])) $firstName = $_SESSION['firstName'];
-if (isset($_SESSION['lastName'])) $lastName = $_SESSION['lastName'];
-if (isset($_SESSION['email'])) $email = $_SESSION['email'];
+if (isset($_SESSION['firstName'])) {
+    $firstName = $_SESSION['firstName'];
+    $_SESSION['firstName'] = NULL;
+}
+if (isset($_SESSION['lastName'])) {
+    $lastName = $_SESSION['lastName'];
+    $_SESSION['lastName'] = NULL;
+}
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    $_SESSION['email'] = NULL;
+}
 
 ?>
 <!DOCTYPE html>
