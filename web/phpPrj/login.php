@@ -24,15 +24,16 @@ if (isset($_SESSION['users'])) {
     <main>
         <div class='main-banner'></div>
         <div id="login">
+        <h1>Login</h1>
         <?php
             // message is defined in the header
             if (isset($message)) {
                 echo $message;
             }
         ?>
-            <h1>Login</h1>
             <div class="form-wrapper">
-                <form method="POST" action="controller.php?action=login">
+                <form method="POST" action="controller.php">
+                <input type='hidden' name='action' value='login'>
                     <div class="flex-wrapper space-between">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email">
