@@ -304,7 +304,7 @@ function login($db) {
 function register($db) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $rawPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-    $confirmPassword = filter_input(INPUT_POST, 'confirmpassword', FILTER_SANITIZE_STRING);
+    $confirmPassword = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_STRING);
     $firstName = filter_input(INPUT_POST, 'fName', FILTER_SANITIZE_STRING);
     $lastName = filter_input(INPUT_POST, 'lName', FILTER_SANITIZE_STRING);
 
