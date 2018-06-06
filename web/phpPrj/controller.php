@@ -308,6 +308,10 @@ function register($db) {
     $firstName = filter_input(INPUT_POST, 'fName', FILTER_SANITIZE_STRING);
     $lastName = filter_input(INPUT_POST, 'lName', FILTER_SANITIZE_STRING);
 
+    $_SESSION['firstName'] = $firstName;
+    $_SESSION['lastName'] = $lastName;
+    $_SESSION['email'] = $email;
+
     if ($rawPassword !== $confirmPassword) {
         $_SESSION['message'] = "Passwords must match";
         $_SESSION['messageType'] = 'error';

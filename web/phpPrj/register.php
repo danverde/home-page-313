@@ -7,6 +7,9 @@ if (isset($_SESSION['users'])) {
     // exit();
 }
 
+if (isset($_SESSION['firstName'])) $firstName = $_SESSION['firstName'];
+if (isset($_SESSION['lastName'])) $lastName = $_SESSION['lastName'];
+if (isset($_SESSION['email'])) $email = $_SESSION['email'];
 
 ?>
 <!DOCTYPE html>
@@ -38,15 +41,15 @@ if (isset($_SESSION['users'])) {
                     <input type="hidden" name="action" value="register">
                     <div class="flex-wrapper space-between">
                         <label for="fName">First name:</label>
-                        <input type="text" id="fName" name="fName">
+                        <input type="text" id="fName" name="fName" <?php if (isset($firstName)) echo "value='$firstName'";?>>
                     </div>
                     <div class="flex-wrapper space-between">
                         <label for="lName">Last name:</label>
-                        <input type="text" id="lName" name="lName">
+                        <input type="text" id="lName" name="lName" <?php if (isset($lastName)) echo "value='$lastName'";?>>
                     </div>
                     <div class="flex-wrapper space-between">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" <?php if (isset($email)) echo "value='$email'";?>>
                     </div>
                     <div class="flex-wrapper space-between">
                         <label for="password">Password:</label>
