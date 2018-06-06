@@ -97,7 +97,10 @@ function getBuild($db) {
     
     /* UserId must not be empty */
     if (!isset($userId)) {
-        return;
+        $_SESSION['message'] = "Unable to determine current user";
+        $_SESSION['messageType'] = 'error';
+        header("location: ./build.php");
+        exit();
     }
 
     try {
