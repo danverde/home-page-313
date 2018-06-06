@@ -353,9 +353,9 @@ function register($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "We were unable to log you in.";
         $_SESSION['messageType'] = 'error';
-        // var_dump($err); // TESTING
-        header("location: ./login.php");
+        var_dump($err); // TESTING
         exit();
+        header("location: ./login.php");
     }
 }
 
