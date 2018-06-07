@@ -107,10 +107,6 @@ function getBuild($db) {
     }
 
     try {
-        // TODO
-        // loop through each item type & get the corresponding build item
-        // OR
-        // loop through itemTypes & build to match items 
 
         $stmt = $db->prepare('SELECT i.item_id, i.name, i.price, it.item_type_name, it.item_type_id
         FROM items AS i
@@ -133,12 +129,10 @@ function getBuild($db) {
     } catch(PDOException $err) {
         $_SESSION['message'] = "Unable to get items";
         $_SESSION['messageType'] = 'error';
-        // var_dump($err); //TESTING
-        // die(); /TESTING
+    } finally {
+        header("location: ./build.php?action=getBuild");
+        exit();
     }
-
-    header("location: ./build.php?action=getBuild");
-    exit();
 }
 
 /***********************************************
@@ -167,9 +161,6 @@ function addToBuild($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "Unable to add $itemName To build";
         $_SESSION['messageType'] = 'error';
-        // TODO where to send us???
-        // var_dump($err);
-        // die();
     } finally {
         browse($db, $itemType);
     }
@@ -199,8 +190,6 @@ function clearBuild($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
         $_SESSION['messageType'] = 'error';
-        // var_dump($err); // TESTING
-        // die(); // TESTING
         getBuild($db);
     }
 }
@@ -237,9 +226,6 @@ function removeFromBuild($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "Something went wrong while removing that item";
         $_SESSION['messageType'] = 'error';
-        // TODO where to send these??
-        // var_dump($err); // TESTING
-        // die();
     } finally {
         if ($caller === "build") {
             getBuild($db);
@@ -284,7 +270,7 @@ function login($db) {
 
         /* if a user was found compare passwords */
         if (count($userData) > 0 && password_verify($password, $userData['password']) === true) {
-            $_SESSION['message'] = "Successfully Logged In";
+            $_SESSION['mesfsage'] = "Successfully Logged In";
             $_SESSION['userId'] = $userData['user_id'];
             header('location: ./index.php');
             exit();
@@ -300,7 +286,6 @@ function login($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "We were unable to log you in.";
         $_SESSION['messageType'] = 'error';
-        // var_dump($err); // TESTING
         header("location: ./login.php");
         exit();
     }
@@ -366,13 +351,15 @@ function register($db) {
     } catch(Exception $err) {
         $_SESSION['message'] = "We were unable to log you in.";
         $_SESSION['messageType'] = 'error';
-        var_dump($err); // TESTING
-        exit();
         header("location: ./login.php");
+        exit();
     }
 }
 
-
+/********************************
+ * logs the current user out by 
+ * destroying the session
+ ********************************/
 function logout() {
     session_destroy();
     header('location: ./login.php');
