@@ -19,7 +19,7 @@ $loggedIn = isset($_SESSION['userId']);
             <?php
             if ($loggedIn === true) {
                 echo "<a class='button' href='controller.php?action=logout'>Logout</a>
-                    <a class='button btn-primary' href='./build.php?action=getBuild'>My Build</a>";
+                    <a class='button btn-primary' href='./controller.php?action=getBuild'>My Build</a>";
             } else {
                 echo "<a class='button' href='./login.php'>Login</a>
                 <a class='button primary' href='./register.php'>Register</a>";
