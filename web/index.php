@@ -87,10 +87,6 @@
                     <p><a href="https://powerful-dawn-72729.herokuapp.com/nodePrj/index.html">Project (PC Builder)</a></p>
                     <p>Week 8</p>
                     <p>Week 9</p>
-                    <ul>
-                        <li><a href="wk5/team.php">Week 5 Team Activity</a></li>
-                        <li><a href="wk5/index.php">Read Only PHP Project</a></li>
-                    </ul>
                     <p>Week 10</p>
                     <p>Week 11</p>
                     <p>Week 12</p>
